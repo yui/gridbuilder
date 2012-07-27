@@ -17,23 +17,38 @@
     </div>
     <div id="wrapper" class="yui3-g">
         <div id="controlPanel" class="yui3-g">
-            <div class="yui3-u-1-3">
-                <div class="cell">
+            <div class="yui3-u-1-6">
+                <div class="cell" id="width">
                     <label for="grid-width">Width</label>
-                    <input type="text" id="grid-width" value="" placeholder="960" /> <small>px</small>
+                    <input type="text" id="grid-width" value="960" /> <small>px</small>
                 </div>
             </div>
-            <div class="yui3-u-1-3">
-                <div class="cell">
-                    <label for="grid-columns">Number of Columns</label>
-                    <input type="text" id="grid-columns"  value="" placeholder="24" />
+            <div class="yui3-u-1-6">
+                <div class="cell" id="columns">
+                    <label for="grid-columns">Columns</label>
+                    <input type="text" id="grid-columns"  value="24" />
                 </div>
             </div>
-            <div class="yui3-u-1-3">
-                <div class="cell">
-                    <label for="grid-layout">Type of Layout</label>
+            <div class="yui3-u-1-6">
+                <div class="cell" id="layout">
+                    <label for="grid-layout">Type of Layout</label><br/>
                     <input type="radio" name="grid-layout" id="grid-layout-fixed" checked /> <small>Fixed</small>
                     <input type="radio" name="grid-layout" id="grid-layout-fluid" /> <small>Fluid</small>
+                </div>
+            </div>
+            <div class="yui3-u-1-6">
+                <div class="cell" id="responsive">
+                    <label for="grid-responsive">Responsive</label><br/>
+                    <input type="radio" name="grid-responsive" id="grid-responsive-yes" /> <small>Yes</small>
+                    <input type="radio" name="grid-responsive" id="grid-responsive-no" checked/> <small>No</small>
+                </div>
+            </div>
+            <div class="yui3-u-1-3">
+                <div class="cell" id="media-queries">
+                    <label>Media Queries</label><br/>
+                    <div id="current-media-queries"></div>
+                    <input type="button" id="default-media-queries" value="Use Defaults" disabled/>
+                    <input type="button" id="add-media-queries" value="Add" disabled/>
                 </div>
             </div>
         </div>
@@ -63,10 +78,15 @@
                   '#grid-columns': {keyup: 'columnsChanged'},
                   '#grid-layout-fixed': {click: 'layoutChanged'},
                   '#grid-layout-fluid': {click: 'layoutChanged'},
+                  '#grid-responsive-yes': {click: 'responsiveChanged'},
+                  '#grid-responsive-no': {click: 'responsiveChanged'},
+                  '#default-media-queries': {click: 'defaultMediaQueriesClicked'},
+                  '#add-media-queries': {click: 'addMediaQueryClicked'}
                 },
 
-                initializer: function () {
-
+                initializer: function (config) {
+                    var model = this.get("model");
+                    model.after("mediaQueriesChange", this.updateMediaQueries, this);
                 },
 
                 render: function () {
@@ -98,6 +118,43 @@
                     else if (id === 'grid-layout-fluid') {
                         model.set("usePixels", false);
                     }
+                },
+
+                responsiveChanged: function(e) {
+                    var id = e.target._node.id,
+                        model = this.get("model");
+
+                    if (id === 'grid-responsive-yes') {
+                        model.set("isResponsive", true);
+                        Y.all("#media-queries input[type='button']").set("disabled", false);
+                    }
+                    else if (id === 'grid-responsive-no') {
+                        model.set("isResponsive", false);
+
+                        //Disable Media Queries Buttons
+                        Y.all("#media-queries input[type='button']").set("disabled", true);
+                    }
+                },
+
+                defaultMediaQueriesClicked: function(e) {
+                    this.get("model").set("mediaQueries", this.get("defaultMediaQueries"));
+                },
+
+                addMediaQueryClicked: function(e) {
+                    alert("Add Media Queries Clicked");
+                },
+
+                updateMediaQueries: function (e) {
+                    Y.log(e);
+                    var html = "",
+                        i = 0,
+                        candyTemplate = this.get("candyTemplate");
+
+                    Y.log(candyTemplate);
+                    for (; i < e.newVal.length; i++) {
+                        html += Y.Lang.sub(candyTemplate, {mqId: e.newVal[i].id, content: e.newVal[i].id});
+                    }
+                    this.get("candyContainer").setHTML(html);
                 }
 
             }, {
@@ -109,6 +166,37 @@
                     },
                     model: {
                         value: undefined
+                    },
+
+                    candyTemplate: {
+                        value: '<span class="candy yui3-u" data-mqId="{mqId}">{content}</span>'
+                    },
+
+                    candyContainer: {
+                        valueFn: function() {
+                            return Y.one("#current-media-queries");
+                        }
+                    },
+
+                    defaultMediaQueries: {
+                        value: [
+                            {
+                                max: 480, 
+                                id: '< 481px',
+                                collapse: 'all',
+                            },
+                            {
+                                max: 767,
+                                id: '< 768px',
+                                collapse: 'all'
+                            },
+                            {
+                                min: 768,
+                                max: 979,
+                                id: '768px < X < 979px',
+                                collapse: []
+                            }
+                        ]
                     }
                 }
             });
@@ -123,12 +211,13 @@
                     model.after('columnsChange', this.render, this);
                     model.after('widthChange', this.render, this);
                     model.after('usePixelsChange', this.render, this);
-                    model.after('destroy', this.destroy, this);
+                    model.after('isResponsiveChange', this.render, this);
+                    model.after('mediaQueriesChange', this.render, this);
                 },
 
                 render: function () {
                     Y.log("Render CSS View");
-                    this.get("container").set('text', this.get("model").toCSS());
+                    this.get("container").empty().set('text', this.get("model").toCSS());
                     return this;
                 },
                 model: undefined,
@@ -145,19 +234,14 @@
             Y.HTMLView = Y.Base.create('htmlView', Y.View, [], {
                 initializer: function () {
                     var model = this.get('model');
- 
-                    model.after('columnsChange', this.render, this);
-                    model.after('widthChange', this.render, this);
-                    model.after('usePixelsChange', this.render, this);
-                    model.after('destroy', this.destroy, this);
+                    model.after('cssChange', this.render, this);
                 },
 
                 render: function () {
                     Y.log("Render HTML View");
-                    Y.log(this.get("model").toHTML());
-                    var css = this.get("model").toCSS();
-                    Y.one("#demo-grid-styles").empty().set("text", css);
-                    this.get("container").setHTML(this.get("model").toColumns());
+                    var css = this.get("model").get('css');
+                    Y.one("#demo-grid-styles").empty().set('text', css);
+                    this.get("container").setHTML(this.get("model").toColumnsHTML());
                     return this;
                 },
                 model: undefined,
@@ -196,15 +280,15 @@
 
               toCSS: function() {
                 var classPrefix = this.get("classPrefix"),
-                unitClassName = this.get("unitClassName"),
-                columns = this.get("columns"),
-                usePixels = this.get("usePixels"),
-                width = this.get("width"),
-                internalPrefix = this.get("_internalPrefix"),
-                css = '.' + classPrefix + unitClassName + '-1 {width: auto;}\n',
-                i, 
-                j,
-                unitsArr = [];
+                    unitClassName = this.get("unitClassName"),
+                    columns = this.get("columns"),
+                    usePixels = this.get("usePixels"),
+                    width = this.get("width"),
+                    internalPrefix = this.get("_internalPrefix"),
+                    css = '.' + classPrefix + unitClassName + '-1 {width: auto;}\n',
+                    i, 
+                    j,
+                    unitsArr = [];
 
                 for (i = 1; i <= columns; i++) {
                     for (j = 1; j < i; j++) {
@@ -222,10 +306,83 @@
                 }
 
                 this.set("units", unitsArr);
+                //add in responsive css
+                css += this.toResponsiveCSS();
+
+                this.set('css', css);
+                //Y.log(css);
                 return css;
               },
 
-              toColumns: function() {
+              toResponsiveCSS: function() {
+
+                var classPrefix = this.get("classPrefix"),
+                    unitClassName = this.get("unitClassName"),
+                    columns = this.get("columns"),
+                    usePixels = this.get("usePixels"),
+                    width = this.get("width"),
+                    internalPrefix = this.get("_internalPrefix"),
+                    isResponsive = this.get("isResponsive"),
+                    mediaQueries = this.get("mediaQueries"),
+                    i,
+                    j,
+                    css = '',
+                    currentQuery = undefined,
+                    currentCollapse = undefined,
+                    units = this.get("units");
+
+                //Add Responsive CSS if needed
+                if (isResponsive && mediaQueries.length > 0) {
+
+                    Y.log("Responsive, updating CSS");
+
+                    for (i = 0; i < mediaQueries.length; i++) {
+                        currentQuery = mediaQueries[i];
+
+                        //Set up the media query
+                        css += '@media';
+
+                        if (currentQuery.min && currentQuery.max) {
+                            css += '(min-width: ' + currentQuery.min + 'px) and (max-width: ' + currentQuery.max + 'px) {';
+                        }
+                        else if (currentQuery.min) {
+                            css += '(min-width: ' + currentQuery.min + 'px) {';
+                        }
+                        else if (currentQuery.max) {
+                            css += '(max-width: ' + currentQuery.max + 'px) {';
+                        }
+
+                        // if (currentQuery.collapse === 'all') {
+                        //     currentQuery.collapse = units;
+                        // }
+
+                        currentQuery.collapse = units;
+
+                        Y.log("Adding Responsive for units: " + currentQuery.collapse);
+                        //Go through all the collapsable elements and set rules for them.
+                        for (j = 0; j < currentQuery.collapse.length; j++) {
+                            currentCollapse = currentQuery.collapse[j].split('/');
+                            css += '#' + internalPrefix + ' .' + classPrefix + unitClassName + '-' + currentCollapse[0] + '-' + currentCollapse[1];
+
+                            //if there is another element, add the comma. otherwise dont.
+                            if (currentQuery.collapse[j+1] !== undefined) {
+                                css += ', ';
+                            }
+                            else {
+                                css += '{width: 100%;}'
+                            }
+                        }
+
+                        //Closing bracket for the media query.
+                        css += '}\n';
+                    }
+                }
+                return css;
+              },
+
+
+              //Provides the HTML for the highest denominator columns (1-24 in a 24-col grid)
+              toColumnsHTML: function() {
                 var tagName = this.get("tagName"),
                 classPrefix = this.get("classPrefix"),
                 unitClassName = this.get("unitClassName"),
@@ -306,7 +463,29 @@
                   validator: Y.Lang.isNumber
                 },
 
-                //This prefix allows the grid to be contextually set.
+                isResponsive: {
+                    value: false
+                },
+
+                css: {
+                    value: undefined
+                },
+
+                /*
+                Each mediaQuery object has 4 properties to generate the appropriate CSS:
+
+                min: the min-width value (optional, but need either min or max supplied)
+                max: the max-width value (optional, but need either min or max supplied)
+                id: an ID just for display purposes
+                collapse: an array of units which will be collapsed (eg: ['1/2', '1/4']. You can provide a string 'all' to collapse all the units on the grid.)
+
+                */
+                mediaQueries: {
+                    value: [],
+                    validator: Y.Lang.isArray
+                },
+
+                //This prefix allows the grid CSS to be contextually set to the demo area on the app.
                 _internalPrefix: {
                     value: 'demo-html'
                 }
