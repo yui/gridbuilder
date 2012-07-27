@@ -107,6 +107,13 @@
   -moz-box-shadow: @arguments;
   box-shadow: @arguments;
 }
+
+.text-shadow(@arguments) {
+  -webkit-text-shadow: @arguments;
+  -moz-text-shadow: @arguments;
+  text-shadow: @arguments;
+}
+
 .columns(@colwidth: 250px, @colcount: 0, @colgap: 50px, @columnRuleColor: #EEE, @columnRuleStyle: solid, @columnRuleWidth: 1px) {
   -moz-column-width: @colwidth;
   -moz-column-count: @colcount;
