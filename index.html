@@ -6,6 +6,10 @@
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.1/build/cssgrids/grids-min.css">
     <link rel="stylesheet" type="text/css" href="css/user-interface.css">
 
+    <style id="demo-grid-styles" type="text/css">
+
+    </style>
+
 </head>
 <body class="yui3-g">
     <div id="header" class="yui3-u-1">
@@ -16,13 +20,13 @@
             <div class="yui3-u-1-3">
                 <div class="cell">
                     <label for="grid-width">Width</label>
-                    <input type="text" id="grid-width" value=""/> <small>px</small>
+                    <input type="text" id="grid-width" value="" placeholder="960" /> <small>px</small>
                 </div>
             </div>
             <div class="yui3-u-1-3">
                 <div class="cell">
                     <label for="grid-columns">Number of Columns</label>
-                    <input type="text" id="grid-columns"  value=""/>
+                    <input type="text" id="grid-columns"  value="" placeholder="24" />
                 </div>
             </div>
             <div class="yui3-u-1-3">
@@ -48,7 +52,6 @@
     </div>
 
     <script src="http://yui.yahooapis.com/3.5.1/build/yui/yui-min.js"></script>
-    <script src="/public/js/grids.js"></script>
     <script>
         YUI().use('app', 'stylesheet', function (Y) {
 
@@ -142,9 +145,7 @@
             Y.HTMLView = Y.Base.create('htmlView', Y.View, [], {
                 initializer: function () {
                     var model = this.get('model');
-                    this.set("stylesheet", new Y.StyleSheet());
-                    // Re-render this view when the model changes, and destroy this view when
-                    // the model is destroyed.
+ 
                     model.after('columnsChange', this.render, this);
                     model.after('widthChange', this.render, this);
                     model.after('usePixelsChange', this.render, this);
@@ -155,8 +156,7 @@
                     Y.log("Render HTML View");
                     Y.log(this.get("model").toHTML());
                     var css = this.get("model").toCSS();
-                    var stylesheet = this.get('stylesheet');
-                    stylesheet.set(css);
+                    Y.one("#demo-grid-styles").empty().set("text", css);
                     this.get("container").setHTML(this.get("model").toColumns());
                     return this;
                 },
@@ -167,13 +167,6 @@
                             valueFn: function () {
                             return Y.one('#demo-html');
                         }
-                    },
-
-                    stylesheet: {
-                        value: undefined
-                    },
-                    styles: {
-                        value: undefined
                     }
                 }
             });
