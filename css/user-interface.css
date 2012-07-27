@@ -1,0 +1,75 @@
+/*---------------------------------------------------
+    LESS Elements 0.6
+  ---------------------------------------------------
+    A set of useful LESS mixins by Dmitry Fadeyev
+    Special thanks for mixin suggestions to:
+      Kris Van Herzeele,
+      Benoit Adam,
+      Portenart Emile-Victor,
+      Ryan Faerman
+
+    More info at: http://lesselements.com
+-----------------------------------------------------*/
+html {
+  background: #eee;
+}
+body {
+  font-family: "HelveticaNeue", sans-serif;
+  font-weight: 300;
+  height: 100%;
+}
+#header {
+  background: black;
+  height: 2em;
+}
+#wrapper {
+  width: 90%;
+  -webkit-box-shadow: 0 0 4px #d9d9d9;
+  -moz-box-shadow: 0 0 4px #d9d9d9;
+  box-shadow: 0 0 4px #d9d9d9;
+  margin: 20px auto;
+  background: #ffffff;
+  border: 1px solid #a6a6a6;
+}
+.cell {
+  background: #f7f7f5;
+  -webkit-box-shadow: 0 0 2px #d9d9d9;
+  -moz-box-shadow: 0 0 2px #d9d9d9;
+  box-shadow: 0 0 2px #d9d9d9;
+  padding: 10px;
+  height: 2.2em;
+  text-transform: uppercase;
+  font-size: 80%;
+  color: #666666;
+  font-weight: bold;
+}
+.cell label {
+  margin-right: 10px;
+}
+.cell input[type="text"] {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #d9d9d9;
+  padding: 5px;
+  width: 3.3em;
+}
+#demo > h3,
+#demo > div {
+  padding: 20px;
+  text-align: center;
+}
+.demo-unit {
+  height: 250px;
+  background: #fff4a5;
+  margin: 2px;
+  border: 1px solid #ffe83f;
+}
+#demo-css {
+  font-size: 60%;
+  background: #d9d9d9;
+  color: darekn(#666666, 30%);
+}

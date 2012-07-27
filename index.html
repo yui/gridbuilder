@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.1/build/cssreset/cssreset-min.css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.1/build/cssbase/cssbase-min.css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.1/build/cssgrids/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="css/user-interface.css">
+
+</head>
+<body class="yui3-g">
+    <div id="header" class="yui3-u-1">
+        
+    </div>
+    <div id="wrapper" class="yui3-g">
+        <div id="controlPanel" class="yui3-g">
+            <div class="yui3-u-1-3">
+                <div class="cell">
+                    <label for="grid-width">Width</label>
+                    <input type="text" id="grid-width" value=""/> <small>px</small>
+                </div>
+            </div>
+            <div class="yui3-u-1-3">
+                <div class="cell">
+                    <label for="grid-columns">Number of Columns</label>
+                    <input type="text" id="grid-columns"  value=""/>
+                </div>
+            </div>
+            <div class="yui3-u-1-3">
+                <div class="cell">
+                    <label for="grid-layout">Type of Layout</label>
+                    <input type="radio" name="grid-layout" id="grid-layout-fixed" checked /> <small>Fixed</small>
+                    <input type="radio" name="grid-layout" id="grid-layout-fluid" /> <small>Fluid</small>
+                </div>
+            </div>
+        </div>
+
+        <div id="demo" class="yui3-u-1">
+            <h3>Demo</h3>
+            <div id="demo-html">
+
+            </div>
+
+            <h3>Grid CSS</h3>
+            <div id="demo-css">
+
+            </div>
+        </div>
+    </div>
+
+    <script src="http://yui.yahooapis.com/3.5.1/build/yui/yui-min.js"></script>
+    <script src="/public/js/grids.js"></script>
+    <script>
+        YUI().use('app', 'stylesheet', function (Y) {
+
+
+            Y.ControlView = Y.Base.create("controlView", Y.View, [], {
+
+                events: {
+                  '#grid-width': {keyup: 'widthChanged'},
+                  '#grid-columns': {keyup: 'columnsChanged'},
+                  '#grid-layout-fixed': {click: 'layoutChanged'},
+                  '#grid-layout-fluid': {click: 'layoutChanged'},
+                },
+
+                initializer: function () {
+
+                },
+
+                render: function () {
+                    var container = this.get('container');
+                    
+                     // Append the container element to the DOM if it's not on the page already.
+                    if (!container.inDoc()) {
+                        Y.one('body').append(container);
+                    }
+                },
+
+                widthChanged: function(e) {
+                    var width = parseInt(e.currentTarget._node.value, 10);
+                    this.get("model").set('width', width);
+                },
+
+                columnsChanged: function(e) {
+                    var numCol = parseInt(e.currentTarget._node.value, 10);
+                    this.get("model").set('columns', numCol);
+                },
+
+                layoutChanged: function(e) {
+                    var id = e.target._node.id,
+                        model = this.get("model");
+
+                    if (id === 'grid-layout-fixed') {
+                        model.set("usePixels", true);
+                    }
+                    else if (id === 'grid-layout-fluid') {
+                        model.set("usePixels", false);
+                    }
+                }
+
+            }, {
+                ATTRS: {
+                    container: {
+                        valueFn: function () {
+                            return Y.one("#controlPanel");
+                        }
+                    },
+                    model: {
+                        value: undefined
+                    }
+                }
+            });
+
+
+            Y.CSSView = Y.Base.create('cssView', Y.View, [], {
+                initializer: function () {
+                    var model = this.get('model');
+
+                    // Re-render this view when the model changes, and destroy this view when
+                    // the model is destroyed.
+                    model.after('columnsChange', this.render, this);
+                    model.after('widthChange', this.render, this);
+                    model.after('usePixelsChange', this.render, this);
+                    model.after('destroy', this.destroy, this);
+                },
+
+                render: function () {
+                    Y.log("Render CSS View");
+                    this.get("container").set('text', this.get("model").toCSS());
+                    return this;
+                },
+                model: undefined,
+            }, {
+                ATTRS: {
+                    container: {
+                            valueFn: function () {
+                            return Y.one('#demo-css');
+                        }
+                    }
+                }
+            });
+
+            Y.HTMLView = Y.Base.create('htmlView', Y.View, [], {
+                initializer: function () {
+                    var model = this.get('model');
+                    this.set("stylesheet", new Y.StyleSheet());
+                    // Re-render this view when the model changes, and destroy this view when
+                    // the model is destroyed.
+                    model.after('columnsChange', this.render, this);
+                    model.after('widthChange', this.render, this);
+                    model.after('usePixelsChange', this.render, this);
+                    model.after('destroy', this.destroy, this);
+                },
+
+                render: function () {
+                    Y.log("Render HTML View");
+                    Y.log(this.get("model").toHTML());
+                    var css = this.get("model").toCSS();
+                    var stylesheet = this.get('stylesheet');
+                    stylesheet.set(css);
+                    this.get("container").setHTML(this.get("model").toColumns());
+                    return this;
+                },
+                model: undefined,
+            }, {
+                ATTRS: {
+                    container: {
+                            valueFn: function () {
+                            return Y.one('#demo-html');
+                        }
+                    },
+
+                    stylesheet: {
+                        value: undefined
+                    },
+                    styles: {
+                        value: undefined
+                    }
+                }
+            });
+
+
+
+
+
+            // Create a new Y.PieModel class that extends Y.Model.
+            Y.GridModel = Y.Base.create('gridModel', Y.Model, [], {
+
+              computePercent: function(span, total) {
+                var val = Math.round(span/total * 10000000) / 100000;
+                return val +'%';
+              },
+
+              computePixel: function(span, total, width) {
+                var val = '';
+
+                if (width !== 'auto') {
+                    val = width * Math.round(span/total * 1000000) / 1000000;
+                    val += 'px';
+                }
+
+                return val || 'auto';
+              },
+
+              toCSS: function() {
+                var classPrefix = this.get("classPrefix"),
+                unitClassName = this.get("unitClassName"),
+                columns = this.get("columns"),
+                usePixels = this.get("usePixels"),
+                width = this.get("width"),
+                internalPrefix = this.get("_internalPrefix"),
+                css = '.' + classPrefix + unitClassName + '-1 {width: auto;}\n',
+                i, 
+                j,
+                unitsArr = [];
+
+                for (i = 1; i <= columns; i++) {
+                    for (j = 1; j < i; j++) {
+                        if (j === 1 || i % j !== 0) { // skip reducible
+                            if (!(i % 2 === 0 && j % 2 === 0)) {
+                                css += '#' + internalPrefix + ' .' + classPrefix + unitClassName + '-' + j + '-' + i + ' {width: ' + (
+                                    (usePixels) ?
+                                        this.computePixel(j, i, width) :
+                                        this.computePercent(j, i)
+                                    ) + ';}\n';
+                                unitsArr.push(j + '/' + i);
+                            }
+                        }
+                    }
+                }
+
+                this.set("units", unitsArr);
+                return css;
+              },
+
+              toColumns: function() {
+                var tagName = this.get("tagName"),
+                classPrefix = this.get("classPrefix"),
+                unitClassName = this.get("unitClassName"),
+                className = this.get("className"),
+                columns = this.get("columns"),
+                html = '<' + tagName + ' class="' +  classPrefix +
+                           className + '">',
+                ratio,
+                i;
+
+                for (i = 0; i < columns; i++) {
+                    html += '<div class="' + classPrefix + unitClassName +
+                            '-' + '1' + '-' + columns + '"><div class="demo-unit"></div></div>';
+                }
+
+                html += '</div>';
+                return html;
+              },
+
+              toHTML: function() {
+                var tagName = this.get("tagName"),
+                classPrefix = this.get("classPrefix"),
+                unitClassName = this.get("unitClassName"),
+                className = this.get("className"),
+                units = this.get("units"),
+                html = '<' + tagName + ' class="' +  classPrefix +
+                           className + '">',
+                ratio,
+                i;
+
+                for (i = 0; i < units.length; i++) {
+                    ratio = units[i].split('/');
+                    html += '<div class="' + classPrefix + unitClassName +
+                            '-' + ratio[0] + '-' + ratio[1] + '"><div class="demo-unit"></div></div>';
+                }
+
+                html += '</div>';
+                return html;
+              }
+
+            }, {
+              ATTRS: {
+                // Add custom model attributes here. These attributes will contain your
+                // model's data. See the docs for Y.Attribute to learn more about defining
+                // attributes.
+                className: {
+                  value: 'g'
+                },
+
+                tagName: {
+                  value: 'div'
+                },
+
+                width: {
+                  value: 'auto'
+                },
+
+                classPrefix: {
+                  value: 'yui3-'
+                },
+
+                unitClassName: {
+                  value: 'u'
+                },
+
+                usePixels: {
+                  value: true,
+                  validator: Y.Lang.isBoolean
+                },
+
+                units: {
+                  value: [],
+                  validator: Y.Lang.isArray
+                },
+
+                columns: {
+                  value: 24,
+                  validator: Y.Lang.isNumber
+                },
+
+                //This prefix allows the grid to be contextually set.
+                _internalPrefix: {
+                    value: 'demo-html'
+                }
+              }
+            });
+
+
+            var app = new Y.App({
+                container    : '#wrapper',
+                viewContainer: '#wrapper'
+            });
+
+            app.render();
+
+            //Instantiate Shared Grid Model
+            var gridModel = new Y.GridModel({ width: 960 });
+
+            //Instantiate Control View to manipulate model attributes.     
+            var controlView = new Y.ControlView({ model: gridModel });
+            controlView.render();
+
+            //Instantiate CSS View and Render
+            var cssView = new Y.CSSView({ model: gridModel });
+            cssView.render();
+
+            //Instantiate HTML View and Render
+            var htmlView = new Y.HTMLView({ model: gridModel });
+            htmlView.render();
+        });
+    </script>
+</body>
+</html>

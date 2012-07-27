@@ -1,0 +1,81 @@
+@import "elements.less";
+
+//Variables
+@padS: 5px;
+@padM: 10px;
+@padL: 20px;
+
+//Colours
+@white: white;
+@black: black;
+@bg: #f7f7f5;
+@grey: #666;
+@yellow: #fff4a5;
+@lightGrey: lighten(@grey, 45%);
+@darkGrey: darekn(@grey, 30%);
+html {
+    background: #eee;
+}
+
+body {
+    font-family: "HelveticaNeue", sans-serif;  
+    font-weight: 300;
+    height: 100%;
+}
+
+#header {
+    background: black;
+    height: 2em;
+
+}
+
+#wrapper {
+    width:90%;
+    //.rounded(5px);
+    .box-shadow(0 0 4px @lightGrey);
+    margin: @padL auto;
+    background: @white;
+    border:1px solid darken(@lightGrey, 20%);
+}
+.cell {
+    background: @bg;
+    .box-shadow(0 0 2px @lightGrey);
+    padding: @padM;
+    height: 2.2em;
+    text-transform: uppercase;
+    font-size:80%;
+    color: @grey;
+    font-weight: bold;
+
+    label {
+        margin-right: @padM;
+    }
+
+    input[type="text"] {
+        .rounded(2px);
+        border:1px solid @lightGrey;
+        padding: @padS;
+        width: 3.3em;
+    }
+}
+
+#demo > h3, #demo > div {
+    padding: @padL;
+    text-align: center;
+}
+
+#demo-html {
+   
+}
+
+.demo-unit {
+    height:250px;
+    background: @yellow;
+    margin:2px;
+    border:1px solid darken(@yellow, 20%);
+}
+#demo-css {
+    font-size: 60%;
+    background: @lightGrey;
+    color: @darkGrey;
+}
