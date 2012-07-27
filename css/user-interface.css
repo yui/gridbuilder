@@ -23,7 +23,7 @@ body {
   height: 2em;
 }
 #wrapper {
-  width: 90%;
+  width: 100%;
   -webkit-box-shadow: 0 0 4px #d9d9d9;
   -moz-box-shadow: 0 0 4px #d9d9d9;
   box-shadow: 0 0 4px #d9d9d9;
@@ -37,14 +37,15 @@ body {
   -moz-box-shadow: 0 0 2px #d9d9d9;
   box-shadow: 0 0 2px #d9d9d9;
   padding: 10px;
-  height: 2.2em;
+  min-height: 2.2em;
   text-transform: uppercase;
-  font-size: 80%;
+  font-size: 70%;
   color: #666666;
   font-weight: bold;
 }
 .cell label {
-  margin-right: 10px;
+  margin: 0 10px 10px 0;
+  font-size: 100%;
 }
 .cell input[type="text"] {
   -webkit-border-radius: 2px;
@@ -56,6 +57,22 @@ body {
   border: 1px solid #d9d9d9;
   padding: 5px;
   width: 3.3em;
+}
+.candy {
+  background: #0babec;
+  color: #ffffff;
+  text-transform: none;
+  padding: 5px 10px;
+  margin: 5px;
+  -webkit-text-shadow: -1px 1px 2px #07648a;
+  -moz-text-shadow: -1px 1px 2px #07648a;
+  text-shadow: -1px 1px 2px #07648a;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
 }
 #demo > h3,
 #demo > div {

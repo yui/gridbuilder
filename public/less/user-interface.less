@@ -13,6 +13,7 @@
 @yellow: #fff4a5;
 @lightGrey: lighten(@grey, 45%);
 @darkGrey: darekn(@grey, 30%);
+@lightBlue: #96DDFA;
 html {
     background: #eee;
 }
@@ -30,7 +31,7 @@ body {
 }
 
 #wrapper {
-    width:90%;
+    width:100%;
     //.rounded(5px);
     .box-shadow(0 0 4px @lightGrey);
     margin: @padL auto;
@@ -41,14 +42,15 @@ body {
     background: @bg;
     .box-shadow(0 0 2px @lightGrey);
     padding: @padM;
-    height: 2.2em;
+    min-height: 2.2em;
     text-transform: uppercase;
-    font-size:80%;
+    font-size:70%;
     color: @grey;
     font-weight: bold;
 
     label {
-        margin-right: @padM;
+        margin: 0 @padM @padM 0;
+        font-size:100%;
     }
 
     input[type="text"] {
@@ -59,14 +61,21 @@ body {
     }
 }
 
+.candy {
+    background: darken(@lightBlue, 30%);
+    color: @white;
+    text-transform:none;
+    padding: @padS @padM;
+    margin: @padS;
+    .text-shadow(-1px 1px 2px darken(@lightBlue, 50%));
+    .rounded(10px);
+}
+
 #demo > h3, #demo > div {
     padding: @padL;
     text-align: center;
 }
 
-#demo-html {
-   
-}
 
 .demo-unit {
     height:250px;
