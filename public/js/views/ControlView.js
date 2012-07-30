@@ -5,6 +5,7 @@ YUI.add('controlView', function(Y, name) {
         '#grid-width': {keyup: 'widthChanged'},
         '#grid-columns': {keyup: 'columnsChanged'},
         '#grid-layout-fixed': {click: 'layoutChanged'},
+        '#grid-gutter': {keyup: 'gutterChanged'},
         '#grid-layout-fluid': {click: 'layoutChanged'},
         '#grid-responsive-yes': {click: 'responsiveChanged'},
         '#grid-responsive-no': {click: 'responsiveChanged'},
@@ -46,6 +47,15 @@ YUI.add('controlView', function(Y, name) {
           else if (id === 'grid-layout-fluid') {
               model.set("usePixels", false);
           }
+      },
+
+      gutterChanged: function (e) {
+        var gutter = parseInt(e.currentTarget._node.value, 10);
+        this.get("model").set("gutter", gutter);
+        Y.all('.demo-unit').setStyles({
+          marginLeft: gutter/2 + 'px',
+          marginRight: gutter/2 + 'px'
+        });
       },
 
       responsiveChanged: function(e) {
