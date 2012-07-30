@@ -91,11 +91,9 @@ YUI.add('gridModel', function(Y, name) {
 	                css += '(max-width: ' + currentQuery.max + 'px) {';
 	            }
 
-	            // if (currentQuery.collapse === 'all') {
-	            //     currentQuery.collapse = units;
-	            // }
-
-	            currentQuery.collapse = units;
+	            if (currentQuery.collapse === 'all') {
+	                currentQuery.collapse = units;
+	            }
 
 	            Y.log("Adding Responsive for units: " + currentQuery.collapse);
 	            //Go through all the collapsable elements and set rules for them.
