@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.1/build/cssreset/cssreset-min.css">
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.1/build/cssbase/cssbase-min.css">
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.1/build/cssgrids/grids-min.css">
-    <link rel="stylesheet" type="text/css" href="css/user-interface.css">
+    <link rel="stylesheet" type="text/css" href="public/css/user-interface.css">
 
     <style id="demo-grid-styles" type="text/css">
 
@@ -64,33 +64,35 @@
 
             </div>
         </div>
+		
+		<div id="screen-width" class="yui3-u-1">This bar displays the width as you resize the width.</div>
     </div>
 
-    <script src="http://yui.yahooapis.com/3.5.1/build/yui/yui-debug.js"></script>
+    <script src="http://yui.yahooapis.com/3.5.1/build/yui/yui-min.js"></script>
     <script>
         YUI({
 			modules: {
 				cssView: {
-					async: false,
 					fullpath: '/public/js/views/CSSView.js'
 				},
 				htmlView: {
-					async: false,
 					fullpath: '/public/js/views/HTMLView.js'
 				},
 				
 				controlView: {
-					async: false,
 					fullpath: '/public/js/views/ControlView.js'
 				},
 				
+				widthView: {
+					fullpath: '/public/js/views/WidthView.js'
+				},
+				
 				gridModel: {
-					async: false,
 					fullpath: '/public/js/models/GridModel.js'
 				},
 				
 			}
-		}).use('app', 'cssView', 'htmlView', 'controlView', 'gridModel', function (Y) {
+		}).use('app', 'cssView', 'htmlView', 'controlView', 'widthView', 'gridModel', function (Y) {
 
             var app = new Y.App({
                 container    : '#wrapper',
@@ -113,6 +115,9 @@
             //Instantiate HTML View and Render
             var htmlView = new Y.GB.HTMLView({ model: gridModel });
             htmlView.render();
+
+			//Track Screen Size
+			var screenSizeDisplayer = new Y.GB.WidthView();
         });
     </script>
 </body>
