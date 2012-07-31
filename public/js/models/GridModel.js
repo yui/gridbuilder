@@ -37,7 +37,9 @@ YUI.add('gridModel', function(Y, name) {
                             (usePixels) ?
                                 this.computePixel(j, i, width) :
                                 this.computePercent(j, i)
-                            ) + ';}\n';
+                            ) + ';'
+                            + this.get("_standardStyles")
+                            + '}\n';
                         unitsArr.push(j + '/' + i);
                     }
                 }
@@ -47,9 +49,38 @@ YUI.add('gridModel', function(Y, name) {
         this.set("units", unitsArr);
         //add in responsive css
         css += this.toResponsiveCSS();
-
+        css += this.generateOffsets();
         this.set('css', css);
         //Y.log(css);
+        return css;
+      },
+
+      generateOffsets: function () {
+        var classPrefix = this.get("classPrefix"),
+            offsetClassName = this.get("offsetClassName"),
+            columns = this.get("columns"),
+            usePixels = this.get("usePixels"),
+            width = this.get("width"),
+            internalPrefix = this.get("_internalPrefix"),
+            css = '.' + classPrefix + offsetClassName + '-1 {width: auto;}\n',
+            i, 
+            j,
+            units = this.get("units");
+
+        for (i = 1; i <= columns; i++) {
+            for (j = 1; j < i; j++) {
+                if (j === 1 || i % j !== 0) { // skip reducible
+                    if (!(i % 2 === 0 && j % 2 === 0)) {
+                        css += '#' + internalPrefix + ' .' + classPrefix + offsetClassName + '-' + j + '-' + i + ' {width: ' + (
+                            (usePixels) ?
+                                this.computePixel(j, i, width) :
+                                this.computePercent(j, i)
+                            ) + ';}\n';
+                    }
+                }
+            }
+        }
+
         return css;
       },
 
@@ -185,6 +216,10 @@ YUI.add('gridModel', function(Y, name) {
           value: 'u'
         },
 
+        offsetClassName: {
+            value: 'offset'
+        },
+
         usePixels: {
           value: true,
           validator: Y.Lang.isBoolean
@@ -229,6 +264,10 @@ YUI.add('gridModel', function(Y, name) {
         //This prefix allows the grid CSS to be contextually set to the demo area on the app.
         _internalPrefix: {
             value: 'demo-html'
+        },
+
+        _standardStyles: {
+            value: 'display: inline-block; zoom: 1; *display: inline; letter-spacing: normal; word-spacing: normal; vertical-align: top;'
         }
       }
     }); 
