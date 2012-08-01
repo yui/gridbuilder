@@ -66,9 +66,11 @@ YUI.add('gridModel', function(Y, name) {
 
         }, this);
 
-        //Apply the specific styles. First, Add the .yui3-u-1 styles.
+        /* The following section applies the specific styles. */
 
+        //Add the .yui3-u-1 styles.
         css += internalPrefix + '.' + classPrefix + unitClassName + '-1 {display:block;} \n';
+
 
         Y.Array.each(unitsArr, function(item,  index, array) {
             var u = item.split('/');
@@ -120,6 +122,7 @@ YUI.add('gridModel', function(Y, name) {
       toResponsiveCSS: function() {
 
         var classPrefix = this.get("classPrefix"),
+            className = this.get("className"),
             unitClassName = this.get("unitClassName"),
             columns = this.get("columns"),
             usePixels = this.get("usePixels"),
@@ -127,12 +130,12 @@ YUI.add('gridModel', function(Y, name) {
             internalPrefix = this.get("_internalPrefix"),
             isResponsive = this.get("isResponsive"),
             mediaQueries = this.get("mediaQueries"),
+            responsiveClassName = this.get("responsiveClassName"),
             i,
             j,
             css = '',
             currentQuery = undefined,
-            currentCollapse = undefined,
-            units = this.get("units");
+            currentCollapse = undefined;
 
         //Add Responsive CSS if needed
         if (isResponsive && mediaQueries.length > 0) {
@@ -156,14 +159,21 @@ YUI.add('gridModel', function(Y, name) {
                 }
 
                 if (currentQuery.collapse === 'all') {
-                    currentQuery.collapse = units;
+                    currentQuery.collapse = this.get("units");
                 }
+
+
+                //Add the image width-styling.
+                //css += 'img.' + classPrefix + unitClassName + '-' + responsiveClassName + ' {max-width: 100%; } \n';
 
                 Y.log("Adding Responsive for units: " + currentQuery.collapse);
                 //Go through all the collapsable elements and set rules for them.
                 for (j = 0; j < currentQuery.collapse.length; j++) {
                     currentCollapse = currentQuery.collapse[j].split('/');
-                    css += internalPrefix + '.' + classPrefix + unitClassName + '-' + currentCollapse[0] + '-' + currentCollapse[1];
+
+                    //.yui3-g-responsive > yui3-u-x-y
+                    css += internalPrefix + '.' + classPrefix + className + '-' + responsiveClassName + 
+                            ' > .' + classPrefix + unitClassName + '-' + currentCollapse[0] + '-' + currentCollapse[1];
 
                     //if there is another element, add the comma. otherwise dont.
                     if (currentQuery.collapse[j+1] !== undefined) {
@@ -188,9 +198,10 @@ YUI.add('gridModel', function(Y, name) {
         classPrefix = this.get("classPrefix"),
         unitClassName = this.get("unitClassName"),
         className = this.get("className"),
+        responsiveClassName = this.get("responsiveClassName"),
         columns = this.get("columns"),
         html = '<' + tagName + ' class="' +  classPrefix +
-                   className + '">',
+                   className + '-' + responsiveClassName + '">',
         ratio,
         i;
 
@@ -231,6 +242,10 @@ YUI.add('gridModel', function(Y, name) {
         // attributes.
         className: {
           value: 'g'
+        },
+
+        responsiveClassName: {
+            value: 'responsive'
         },
 
         tagName: {
@@ -296,7 +311,7 @@ YUI.add('gridModel', function(Y, name) {
 
         //This prefix allows the grid CSS to be contextually set to the demo area on the app.
         _internalPrefix: {
-            value: '#demo-html '
+            value: '#demo '
         },
 
         //A set of standard styles that are applied to every unit element. Essentially, it's the inline-block and letter-spacing.
@@ -305,7 +320,7 @@ YUI.add('gridModel', function(Y, name) {
         },
 
         _whiteSpaceCollapse: {
-            value: '.yui3-g {letter-spacing: -0.31em; *letter-spacing: normal; word-spacing: -0.43em; }.yui3-u {display: inline-block;zoom: 1; *display: inline;letter-spacing: normal;word-spacing: normal;vertical-align: top;}\n'
+            value: '.yui3-g, .yui3-g-responsive {letter-spacing: -0.31em; *letter-spacing: normal; word-spacing: -0.43em; }.yui3-u {display: inline-block;zoom: 1; *display: inline;letter-spacing: normal;word-spacing: normal;vertical-align: top;}\n'
         }
 
       }
