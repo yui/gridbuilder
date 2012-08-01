@@ -30,13 +30,22 @@ body {
 
 }
 
+
 #wrapper {
     width:95%;
-    //.rounded(5px);
-    .box-shadow(0 0 4px @lightGrey);
+    .rounded(5px);
+    .box-shadow(0 0 2px lighten(@grey, 25%));
     margin: @padL auto;
     background: @white;
     border:1px solid darken(@lightGrey, 20%);
+}
+
+#controlPanel {
+    position: fixed;
+    top: 0;
+    left:0;
+    width:100%;
+    .box-shadow(0 0 5px @grey);
 }
 .cell {
     background: @bg;
@@ -91,12 +100,13 @@ body {
 
 
 .demo-unit {
-    height:250px;
-    background: white;
-    border:3px dashed darken(@yellow, 20%);
+    height:350px;
+    background: @yellow;
+    border:2px dashed darken(@yellow, 40%);
 }
 #demo-css {
     font-size: 60%;
     background: @lightGrey;
     color: @darkGrey;
+    .rounded(5px);
 }
