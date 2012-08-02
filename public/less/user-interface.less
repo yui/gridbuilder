@@ -33,9 +33,8 @@ body {
 
 #wrapper {
     width:95%;
-    .rounded(5px);
-    .box-shadow(0 0 2px lighten(@grey, 25%));
-    margin: @padL auto;
+    .box-shadow(0 0 2px lighten(@grey, 40%));
+    margin: 2*@padL auto;
     background: @white;
     border:1px solid darken(@lightGrey, 20%);
 }
@@ -48,7 +47,7 @@ body {
     .box-shadow(0 0 5px @grey);
 }
 .cell {
-    background: @bg;
+    .gradient(#FAFAFA, #EAEAEA, #FAFAFA);
     .box-shadow(0 0 2px @lightGrey);
     padding: @padM;
     min-height: 2.2em;

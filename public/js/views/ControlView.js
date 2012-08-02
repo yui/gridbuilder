@@ -153,20 +153,9 @@ YUI.add('controlView', function(Y, name) {
           defaultMediaQueries: {
               value: [
                   {
-                      max: 480, 
-                      id: '< 481px',
-                      collapse: 'all',
-                  },
-                  {
                       max: 767,
                       id: '< 768px',
                       collapse: 'all'
-                  },
-                  {
-                      min: 768,
-                      max: 979,
-                      id: '768px < X < 979px',
-                      collapse: []
                   }
               ]
           },

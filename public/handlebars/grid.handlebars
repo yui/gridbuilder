@@ -1,0 +1,120 @@
+
+.{{classPrefix}}{{className}} {
+    letter-spacing: -0.31em; /* webkit: collapse white-space between units */
+    *letter-spacing: normal; /* reset IE < 8 */
+    word-spacing: -0.43em; /* IE < 8 && gecko: collapse white-space between units */
+}
+
+.{{classPrefix}}{{unitClassName}} {
+    display: inline-block;
+    zoom: 1; *display: inline; /* IE < 8: fake inline-block */
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+}
+
+
+{{! Generate Grouped Styles for all units}}
+{{{groupUnits classPrefix unitClassName units}}} {
+    display: inline-block;
+    zoom: 1; *display: inline; /* IE < 8: fake inline-block */
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+}
+
+{{! Generate Singular Styles Per Unit }}
+
+.{{classPrefix}}{{unitClassName}}-1 {
+    display:block;
+}
+
+
+{{! Generate pixel based or percent based grid and offsets }}
+
+{{#if usePixels}}
+
+    {{#each units}}
+
+        .{{../classPrefix}}{{../unitClassName}}-{{this.span}}-{{this.total}} {
+            width: {{{computePixel this.span this.total ../width}}};
+        }
+
+        .{{../classPrefix}}{{../offsetClassName}}-{{this.span}}-{{this.total}} {
+            margin-left: {{{computePixel this.span this.total ../width}}};
+        }
+
+    {{/each}}
+
+{{else}}
+    
+    {{#each units}}
+
+        .{{../classPrefix}}{{../unitClassName}}-{{this.span}}-{{this.total}} {
+            width: {{{computePercent this.span this.total}}};
+        }
+
+        .{{../classPrefix}}{{../offsetClassName}}-{{this.span}}-{{this.total}} {
+            margin-left: {{{computePercent this.span this.total ../width}}};
+        }
+
+    {{/each}}
+
+
+{{/if}}
+
+
+
+
+{{! RESPONSIVE BEHAVIOR}}
+
+{{#if isResponsive}}
+    
+    .{{classPrefix}}{{className}}-{{responsiveClassName}} {
+        letter-spacing: -0.31em; /* webkit: collapse white-space between units */
+        *letter-spacing: normal; /* reset IE < 8 */
+        word-spacing: -0.43em; /* IE < 8 && gecko: collapse white-space between units */
+    }
+
+
+    {{! DEFAULT MEDIA QUERIES }}
+
+    {{#if useDefaultMediaQueries}}
+
+        @media(max-width: 767px) {
+            .{{../../classPrefix}}{{../../className}}-{{../../responsiveClassName}} > [class ^= "{{../../classPrefix}}{{../../unitClassName}}"] {
+                width:100%
+            }
+        }
+
+
+    {{/if}}
+
+
+
+    {{! CUSTOM MEDIA QUERIES }}
+
+    {{#each mediaQueries}}
+
+        {{! Generate the @Media query using the min and max values provided}}
+        {{{generateMediaQuery this.min this.max}}} {
+
+
+            .{{../../classPrefix}}{{../../className}}-{{../../responsiveClassName}} {
+                width:100%;
+            }
+
+            {{! Collapse all elements that are direct descendents of .yui3-g-responsive > "yui3-u" (default) }}
+            .{{../../classPrefix}}{{../../className}}-{{../../responsiveClassName}} > [class ^= "{{../../classPrefix}}{{../../unitClassName}}"] {
+                width:100%
+            }
+
+        }
+
+    {{/each}}
+
+{{/if}}
+
+
+
+

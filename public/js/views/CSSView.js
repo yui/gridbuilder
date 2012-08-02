@@ -5,16 +5,17 @@ YUI.add('cssView', function(Y, name) {
 
           // Re-render this view when the model changes, and destroy this view when
           // the model is destroyed.
-          model.after('columnsChange', this.render, this);
-          model.after('widthChange', this.render, this);
-          model.after('usePixelsChange', this.render, this);
-          model.after('isResponsiveChange', this.render, this);
-          model.after('mediaQueriesChange', this.render, this);
+          // model.after('columnsChange', this.render, this);
+          // model.after('widthChange', this.render, this);
+          // model.after('usePixelsChange', this.render, this);
+          // model.after('isResponsiveChange', this.render, this);
+          // model.after('mediaQueriesChange', this.render, this);
+          model.after('cssChange', this.render, this);
       },
 
       render: function () {
           Y.log("Render CSS View");
-          this.get("container").empty().set('text', this.get("model").toCSS());
+          this.get("container").empty().set('text', this.get("model").get('css'));
           return this;
       },
       model: undefined,
