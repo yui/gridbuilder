@@ -14,13 +14,17 @@
                 widthView: {
                     fullpath: '/public/js/views/WidthView.js'
                 },
+
+                editMediaQueryView: {
+                    fullpath: '/public/js/views/EditMediaQueryView.js'
+                },
                 
                 gridModel: {
                     fullpath: '/public/js/models/GridModel.js'
                 },
                 
             }
-        }).use('app', 'cssView', 'htmlView', 'controlView', 'widthView', 'gridModel', function (Y) {
+        }).use('app', 'cssView', 'htmlView', 'controlView', 'widthView', 'editMediaQueryView', 'gridModel', function (Y) {
 
             var app = new Y.App({
                 container    : '#wrapper',

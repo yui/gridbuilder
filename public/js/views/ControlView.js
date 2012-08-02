@@ -65,6 +65,7 @@ YUI.add('controlView', function(Y, name) {
           if (id === 'grid-responsive-yes') {
               model.set("isResponsive", true);
               Y.all("#media-queries input[type='button']").set("disabled", false);
+
           }
           else if (id === 'grid-responsive-no') {
               model.set("isResponsive", false);
@@ -93,7 +94,40 @@ YUI.add('controlView', function(Y, name) {
               html += Y.Lang.sub(candyTemplate, {mqId: e.newVal[i].id, content: e.newVal[i].id});
           }
           this.get("candyContainer").setHTML(html);
-      }
+
+          this._mqSubscription = this.get("container").on("click", this.mediaQueryClicked, this);
+
+      },
+
+      mediaQueryClicked: function(e) {
+        var mq, 
+          defaultMq, 
+          editMediaQueryView = this.get("editMediaQueryView");
+        if (Y.one(e.target).hasClass("candy")) {
+          mq = Y.one(e.target);
+          
+          //Get the appropriate media query object.
+          defaultMq = Y.Array.find(this.get("defaultMediaQueries"), function(item) {
+            return (item.id === mq.getAttribute("data-mqId")) ? true : false;
+          }, this);
+
+          if (editMediaQueryView === undefined) {
+            editMediaQueryView = new Y.GB.EditMediaQueryView({model: new Y.Model(defaultMq)})
+          }
+          else {
+            editMediaQueryView.set('model', new Y.Model(defaultMq));
+          }
+
+          this.set("editMediaQueryView", editMediaQueryView);
+          editMediaQueryView.render();
+
+        }
+      },
+
+
+
+      //Subscription object for the click handler on the media query candies
+      _mqSubscription: undefined
 
   }, {
       ATTRS: {
@@ -135,6 +169,10 @@ YUI.add('controlView', function(Y, name) {
                       collapse: []
                   }
               ]
+          },
+
+          editMediaQueryView: {
+            value: undefined
           }
       }
   });
@@ -143,6 +181,6 @@ YUI.add('controlView', function(Y, name) {
 	Y.namespace("GB").ControlView = ControlView;
 	
 }, '0.0.1', {
-	requires: ['node', 'view']
+	requires: ['node', 'view', 'editMediaQueryView']
 });
 

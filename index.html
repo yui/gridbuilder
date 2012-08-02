@@ -12,7 +12,7 @@
     </style>
 
 </head>
-<body class="yui3-g">
+<body class="yui3-g yui3-skin-sam">
     <div id="header" class="yui3-u-1">
         
     </div>
@@ -73,6 +73,30 @@
         </div>
     </div>
     <div id="screen-width" class="yui3-u-1">This bar displays the width as you resize the width.</div>
+
+    <div id="panel-content"></div>
+
+    <script id="edit-media-query-view" type='text/x-template'>
+        <div class="yui3-widget-bd yui3-u-1">
+            <p>This media query 
+                <form>
+                    <fieldset>
+                        <p>
+                            <label for="id">ID</label><br/>
+                            <input type="text" name="id" id="productId" placeholder="" value="{id}">
+                        </p>
+                        <p>
+                            <label for="name">Name</label><br/>
+                            <input type="text" name="name" id="name" value="" placeholder="">
+                        </p>
+                        <p>
+                            <label for="password">Price</label><br/>
+                            <input type="text" name="price" id="price" value="" placeholder="$">
+                        </p>
+                    </fieldset>
+                </form>
+            </div>
+    </script>
 
     <script src="http://yui.yahooapis.com/3.5.1/build/yui/yui-min.js"></script>
     <script src="/public/js/builder.js"></script>

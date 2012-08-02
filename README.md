@@ -12,4 +12,10 @@ collapse elements at {{screen-width}})
 Phone)
 - Outputs a CSS File and an HTML File
 - Gutters
-- yui3-g-responsive > yui3-u will be collapsable, but the rest won't. If you want collapable units, you need to have a g-responsive on the parent. 
+- yui3-g-responsive > yui3-u-* will be collapsable, but the rest won't. If you want collapable units, you need to have a g-responsive on the parent. 
+
+
+TODOs
+- fix gutter issue
+- media query customization
+- fixed width should not wrap when i resize page

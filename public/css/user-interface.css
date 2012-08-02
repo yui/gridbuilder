@@ -498,6 +498,10 @@ body {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
+.candy:hover {
+  cursor: pointer;
+  background: #0987bb;
+}
 #screen-width {
   position: fixed;
   bottom: 0;
