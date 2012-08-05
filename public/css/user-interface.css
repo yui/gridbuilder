@@ -10,455 +10,71 @@
 
     More info at: http://lesselements.com
 -----------------------------------------------------*/
-@media (max-width: 480px) {
-  .yui3-u-1-2,
-  .yui3-u-1-3,
-  .yui3-u-2-3,
-  .yui3-u-1-4,
-  .yui3-u-3-4,
-  .yui3-u-1-5,
-  .yui3-u-2-5,
-  .yui3-u-3-5,
-  .yui3-u-4-5,
-  .yui3-u-1-6,
-  .yui3-u-5-6,
-  .yui3-u-1-7,
-  .yui3-u-2-7,
-  .yui3-u-3-7,
-  .yui3-u-4-7,
-  .yui3-u-5-7,
-  .yui3-u-6-7,
-  .yui3-u-1-8,
-  .yui3-u-3-8,
-  .yui3-u-5-8,
-  .yui3-u-7-8,
-  .yui3-u-1-9,
-  .yui3-u-2-9,
-  .yui3-u-4-9,
-  .yui3-u-5-9,
-  .yui3-u-6-9,
-  .yui3-u-7-9,
-  .yui3-u-8-9,
-  .yui3-u-1-10,
-  .yui3-u-3-10,
-  .yui3-u-7-10,
-  .yui3-u-9-10,
-  .yui3-u-1-11,
-  .yui3-u-2-11,
-  .yui3-u-3-11,
-  .yui3-u-4-11,
-  .yui3-u-5-11,
-  .yui3-u-6-11,
-  .yui3-u-7-11,
-  .yui3-u-8-11,
-  .yui3-u-9-11,
-  .yui3-u-10-11,
-  .yui3-u-1-12,
-  .yui3-u-5-12,
-  .yui3-u-7-12,
-  .yui3-u-9-12,
-  .yui3-u-11-12,
-  .yui3-u-1-13,
-  .yui3-u-2-13,
-  .yui3-u-3-13,
-  .yui3-u-4-13,
-  .yui3-u-5-13,
-  .yui3-u-6-13,
-  .yui3-u-7-13,
-  .yui3-u-8-13,
-  .yui3-u-9-13,
-  .yui3-u-10-13,
-  .yui3-u-11-13,
-  .yui3-u-12-13,
-  .yui3-u-1-14,
-  .yui3-u-3-14,
-  .yui3-u-5-14,
-  .yui3-u-9-14,
-  .yui3-u-11-14,
-  .yui3-u-13-14,
-  .yui3-u-1-15,
-  .yui3-u-2-15,
-  .yui3-u-4-15,
-  .yui3-u-6-15,
-  .yui3-u-7-15,
-  .yui3-u-8-15,
-  .yui3-u-9-15,
-  .yui3-u-10-15,
-  .yui3-u-11-15,
-  .yui3-u-12-15,
-  .yui3-u-13-15,
-  .yui3-u-14-15,
-  .yui3-u-1-16,
-  .yui3-u-3-16,
-  .yui3-u-5-16,
-  .yui3-u-7-16,
-  .yui3-u-9-16,
-  .yui3-u-11-16,
-  .yui3-u-13-16,
-  .yui3-u-15-16,
-  .yui3-u-1-17,
-  .yui3-u-2-17,
-  .yui3-u-3-17,
-  .yui3-u-4-17,
-  .yui3-u-5-17,
-  .yui3-u-6-17,
-  .yui3-u-7-17,
-  .yui3-u-8-17,
-  .yui3-u-9-17,
-  .yui3-u-10-17,
-  .yui3-u-11-17,
-  .yui3-u-12-17,
-  .yui3-u-13-17,
-  .yui3-u-14-17,
-  .yui3-u-15-17,
-  .yui3-u-16-17,
-  .yui3-u-1-18,
-  .yui3-u-5-18,
-  .yui3-u-7-18,
-  .yui3-u-11-18,
-  .yui3-u-13-18,
-  .yui3-u-15-18,
-  .yui3-u-17-18,
-  .yui3-u-1-19,
-  .yui3-u-2-19,
-  .yui3-u-3-19,
-  .yui3-u-4-19,
-  .yui3-u-5-19,
-  .yui3-u-6-19,
-  .yui3-u-7-19,
-  .yui3-u-8-19,
-  .yui3-u-9-19,
-  .yui3-u-10-19,
-  .yui3-u-11-19,
-  .yui3-u-12-19,
-  .yui3-u-13-19,
-  .yui3-u-14-19,
-  .yui3-u-15-19,
-  .yui3-u-16-19,
-  .yui3-u-17-19,
-  .yui3-u-18-19,
-  .yui3-u-1-20,
-  .yui3-u-3-20,
-  .yui3-u-7-20,
-  .yui3-u-9-20,
-  .yui3-u-11-20,
-  .yui3-u-13-20,
-  .yui3-u-15-20,
-  .yui3-u-17-20,
-  .yui3-u-19-20,
-  .yui3-u-1-21,
-  .yui3-u-2-21,
-  .yui3-u-4-21,
-  .yui3-u-5-21,
-  .yui3-u-6-21,
-  .yui3-u-8-21,
-  .yui3-u-9-21,
-  .yui3-u-10-21,
-  .yui3-u-11-21,
-  .yui3-u-12-21,
-  .yui3-u-13-21,
-  .yui3-u-14-21,
-  .yui3-u-15-21,
-  .yui3-u-16-21,
-  .yui3-u-17-21,
-  .yui3-u-18-21,
-  .yui3-u-19-21,
-  .yui3-u-20-21,
-  .yui3-u-1-22,
-  .yui3-u-3-22,
-  .yui3-u-5-22,
-  .yui3-u-7-22,
-  .yui3-u-9-22,
-  .yui3-u-13-22,
-  .yui3-u-15-22,
-  .yui3-u-17-22,
-  .yui3-u-19-22,
-  .yui3-u-21-22,
-  .yui3-u-1-23,
-  .yui3-u-2-23,
-  .yui3-u-3-23,
-  .yui3-u-4-23,
-  .yui3-u-5-23,
-  .yui3-u-6-23,
-  .yui3-u-7-23,
-  .yui3-u-8-23,
-  .yui3-u-9-23,
-  .yui3-u-10-23,
-  .yui3-u-11-23,
-  .yui3-u-12-23,
-  .yui3-u-13-23,
-  .yui3-u-14-23,
-  .yui3-u-15-23,
-  .yui3-u-16-23,
-  .yui3-u-17-23,
-  .yui3-u-18-23,
-  .yui3-u-19-23,
-  .yui3-u-20-23,
-  .yui3-u-21-23,
-  .yui3-u-22-23,
-  .yui3-u-1-24,
-  .yui3-u-5-24,
-  .yui3-u-7-24,
-  .yui3-u-9-24,
-  .yui3-u-11-24,
-  .yui3-u-13-24,
-  .yui3-u-15-24,
-  .yui3-u-17-24,
-  .yui3-u-19-24,
-  .yui3-u-21-24,
-  .yui3-u-23-24 {
-    width: 100%;
-  }
-  .cell {
-    text-align: center;
-  }
-}
-@media (max-width: 767px) {
-  .yui3-u-1-2,
-  .yui3-u-1-3,
-  .yui3-u-2-3,
-  .yui3-u-1-4,
-  .yui3-u-3-4,
-  .yui3-u-1-5,
-  .yui3-u-2-5,
-  .yui3-u-3-5,
-  .yui3-u-4-5,
-  .yui3-u-1-6,
-  .yui3-u-5-6,
-  .yui3-u-1-7,
-  .yui3-u-2-7,
-  .yui3-u-3-7,
-  .yui3-u-4-7,
-  .yui3-u-5-7,
-  .yui3-u-6-7,
-  .yui3-u-1-8,
-  .yui3-u-3-8,
-  .yui3-u-5-8,
-  .yui3-u-7-8,
-  .yui3-u-1-9,
-  .yui3-u-2-9,
-  .yui3-u-4-9,
-  .yui3-u-5-9,
-  .yui3-u-6-9,
-  .yui3-u-7-9,
-  .yui3-u-8-9,
-  .yui3-u-1-10,
-  .yui3-u-3-10,
-  .yui3-u-7-10,
-  .yui3-u-9-10,
-  .yui3-u-1-11,
-  .yui3-u-2-11,
-  .yui3-u-3-11,
-  .yui3-u-4-11,
-  .yui3-u-5-11,
-  .yui3-u-6-11,
-  .yui3-u-7-11,
-  .yui3-u-8-11,
-  .yui3-u-9-11,
-  .yui3-u-10-11,
-  .yui3-u-1-12,
-  .yui3-u-5-12,
-  .yui3-u-7-12,
-  .yui3-u-9-12,
-  .yui3-u-11-12,
-  .yui3-u-1-13,
-  .yui3-u-2-13,
-  .yui3-u-3-13,
-  .yui3-u-4-13,
-  .yui3-u-5-13,
-  .yui3-u-6-13,
-  .yui3-u-7-13,
-  .yui3-u-8-13,
-  .yui3-u-9-13,
-  .yui3-u-10-13,
-  .yui3-u-11-13,
-  .yui3-u-12-13,
-  .yui3-u-1-14,
-  .yui3-u-3-14,
-  .yui3-u-5-14,
-  .yui3-u-9-14,
-  .yui3-u-11-14,
-  .yui3-u-13-14,
-  .yui3-u-1-15,
-  .yui3-u-2-15,
-  .yui3-u-4-15,
-  .yui3-u-6-15,
-  .yui3-u-7-15,
-  .yui3-u-8-15,
-  .yui3-u-9-15,
-  .yui3-u-10-15,
-  .yui3-u-11-15,
-  .yui3-u-12-15,
-  .yui3-u-13-15,
-  .yui3-u-14-15,
-  .yui3-u-1-16,
-  .yui3-u-3-16,
-  .yui3-u-5-16,
-  .yui3-u-7-16,
-  .yui3-u-9-16,
-  .yui3-u-11-16,
-  .yui3-u-13-16,
-  .yui3-u-15-16,
-  .yui3-u-1-17,
-  .yui3-u-2-17,
-  .yui3-u-3-17,
-  .yui3-u-4-17,
-  .yui3-u-5-17,
-  .yui3-u-6-17,
-  .yui3-u-7-17,
-  .yui3-u-8-17,
-  .yui3-u-9-17,
-  .yui3-u-10-17,
-  .yui3-u-11-17,
-  .yui3-u-12-17,
-  .yui3-u-13-17,
-  .yui3-u-14-17,
-  .yui3-u-15-17,
-  .yui3-u-16-17,
-  .yui3-u-1-18,
-  .yui3-u-5-18,
-  .yui3-u-7-18,
-  .yui3-u-11-18,
-  .yui3-u-13-18,
-  .yui3-u-15-18,
-  .yui3-u-17-18,
-  .yui3-u-1-19,
-  .yui3-u-2-19,
-  .yui3-u-3-19,
-  .yui3-u-4-19,
-  .yui3-u-5-19,
-  .yui3-u-6-19,
-  .yui3-u-7-19,
-  .yui3-u-8-19,
-  .yui3-u-9-19,
-  .yui3-u-10-19,
-  .yui3-u-11-19,
-  .yui3-u-12-19,
-  .yui3-u-13-19,
-  .yui3-u-14-19,
-  .yui3-u-15-19,
-  .yui3-u-16-19,
-  .yui3-u-17-19,
-  .yui3-u-18-19,
-  .yui3-u-1-20,
-  .yui3-u-3-20,
-  .yui3-u-7-20,
-  .yui3-u-9-20,
-  .yui3-u-11-20,
-  .yui3-u-13-20,
-  .yui3-u-15-20,
-  .yui3-u-17-20,
-  .yui3-u-19-20,
-  .yui3-u-1-21,
-  .yui3-u-2-21,
-  .yui3-u-4-21,
-  .yui3-u-5-21,
-  .yui3-u-6-21,
-  .yui3-u-8-21,
-  .yui3-u-9-21,
-  .yui3-u-10-21,
-  .yui3-u-11-21,
-  .yui3-u-12-21,
-  .yui3-u-13-21,
-  .yui3-u-14-21,
-  .yui3-u-15-21,
-  .yui3-u-16-21,
-  .yui3-u-17-21,
-  .yui3-u-18-21,
-  .yui3-u-19-21,
-  .yui3-u-20-21,
-  .yui3-u-1-22,
-  .yui3-u-3-22,
-  .yui3-u-5-22,
-  .yui3-u-7-22,
-  .yui3-u-9-22,
-  .yui3-u-13-22,
-  .yui3-u-15-22,
-  .yui3-u-17-22,
-  .yui3-u-19-22,
-  .yui3-u-21-22,
-  .yui3-u-1-23,
-  .yui3-u-2-23,
-  .yui3-u-3-23,
-  .yui3-u-4-23,
-  .yui3-u-5-23,
-  .yui3-u-6-23,
-  .yui3-u-7-23,
-  .yui3-u-8-23,
-  .yui3-u-9-23,
-  .yui3-u-10-23,
-  .yui3-u-11-23,
-  .yui3-u-12-23,
-  .yui3-u-13-23,
-  .yui3-u-14-23,
-  .yui3-u-15-23,
-  .yui3-u-16-23,
-  .yui3-u-17-23,
-  .yui3-u-18-23,
-  .yui3-u-19-23,
-  .yui3-u-20-23,
-  .yui3-u-21-23,
-  .yui3-u-22-23,
-  .yui3-u-1-24,
-  .yui3-u-5-24,
-  .yui3-u-7-24,
-  .yui3-u-9-24,
-  .yui3-u-11-24,
-  .yui3-u-13-24,
-  .yui3-u-15-24,
-  .yui3-u-17-24,
-  .yui3-u-19-24,
-  .yui3-u-21-24,
-  .yui3-u-23-24 {
-    width: 100%;
-  }
-  .cell {
-    text-align: center;
-  }
-}
-@media (min-width: 768px) and (max-width: 979px) {
-  
-}
 html {
   background: #eee;
 }
 body {
-  font-family: "HelveticaNeue", sans-serif;
+  font-family: "HelveticaNeue-Light", sans-serif;
   font-weight: 300;
   height: 100%;
+}
+input,
+textarea,
+select {
+  margin-top: 6px;
 }
 #header {
   background: black;
   height: 2em;
 }
+.centered {
+  text-align: center;
+}
+.hidden {
+  display: none;
+}
+h1 {
+  color: #666666;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.notice {
+  background-color: #1B7AE0;
+  color: white;
+}
 #wrapper {
-  width: 95%;
+  width: 100%;
   -webkit-box-shadow: 0 0 2px #cccccc;
   -moz-box-shadow: 0 0 2px #cccccc;
   box-shadow: 0 0 2px #cccccc;
-  margin: 40px auto;
+  margin: 0 auto;
   background: #ffffff;
   border: 1px solid #a6a6a6;
 }
 #controlPanel {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  -webkit-box-shadow: 0 0 5px #666666;
-  -moz-box-shadow: 0 0 5px #666666;
-  box-shadow: 0 0 5px #666666;
-}
-.cell {
+  margin: 20px;
+  height: 100%;
+  border: 1px solid darekn(#666666, 30%);
+  -webkit-box-shadow: 0 0 3px #666666;
+  -moz-box-shadow: 0 0 3px #666666;
+  box-shadow: 0 0 3px #666666;
   background: #fafafa;
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eaeaea), color-stop(1, #fafafa));
   background: -ms-linear-gradient(bottom, #eaeaea, #fafafa);
   background: -moz-linear-gradient(center bottom, #eaeaea 0%, #fafafa 100%);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.cell {
   -webkit-box-shadow: 0 0 2px #d9d9d9;
   -moz-box-shadow: 0 0 2px #d9d9d9;
   box-shadow: 0 0 2px #d9d9d9;
   padding: 10px;
-  min-height: 2.2em;
+  min-height: 4.2em;
   text-transform: uppercase;
   font-size: 70%;
   color: #666666;
@@ -494,6 +110,7 @@ body {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+  font-size: 80%;
 }
 .candy:hover {
   cursor: pointer;
@@ -511,10 +128,15 @@ body {
   font-size: 80%;
   font-weight: bold;
 }
-#demo > h3,
 #demo > div {
   padding: 20px;
   text-align: center;
+}
+#demo > h3 {
+  text-transform: uppercase;
+  color: darekn(#666666, 30%);
+  text-align: center;
+  font-weight: normal;
 }
 .demo-unit {
   height: 350px;
@@ -522,13 +144,13 @@ body {
   border: 2px dashed #d8be00;
 }
 #demo-css {
+  -webkit-box-shadow: inset 0 0 5px #666666;
+  -moz-box-shadow: inset 0 0 5px #666666;
+  box-shadow: inset 0 0 5px #666666;
+  background: #f2f2f2;
   font-size: 60%;
-  background: #d9d9d9;
-  color: darekn(#666666, 30%);
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
+  color: #666666;
+  height: 300px;
+  line-height: 1.8em;
+  overflow-y: scroll;
 }
