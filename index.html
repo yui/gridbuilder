@@ -5,70 +5,74 @@
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.1/build/cssreset/cssreset-min.css">
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.1/build/cssbase/cssbase-min.css">
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.1/build/cssgrids/grids-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.6.0/build/cssbutton/cssbutton.css">
     <link rel="stylesheet" type="text/css" href="public/css/user-interface.css">
-
     <style id="demo-grid-styles" type="text/css">
 
     </style>
 
 </head>
 <body class="yui3-g yui3-skin-sam">
-    <div id="header" class="yui3-u-1">
-        
-    </div>
     <div id="wrapper" class="yui3-g">
-        <div id="controlPanel" class="yui3-g">
-            <div class="yui3-u-1-6">
-                <div class="cell" id="width">
-                    <label for="grid-width">Width</label>
-                    <input type="text" id="grid-width" value="960" /> <small>px</small>
+        <h1 class="yui3-u-1 centered">YUI Grid Builder</h1>
+
+        <div class="yui3-u-1">
+            <div class="yui3-g" id="controlPanel">
+                <div class="yui3-u-1-6">
+                    <div class="cell" id="width">
+                        <label for="grid-width">Width</label>
+                        <input type="text" id="grid-width" value="960" /> <small>px</small>
+                    </div>
                 </div>
-            </div>
-            <div class="yui3-u-1-6">
-                <div class="cell" id="columns">
-                    <label for="grid-columns">Columns</label>
-                    <input type="text" id="grid-columns"  value="24" />
+                <div class="yui3-u-1-6">
+                    <div class="cell" id="columns">
+                        <label for="grid-columns">Columns</label>
+                        <input type="text" id="grid-columns"  value="24" />
+                    </div>
                 </div>
-            </div>
-            <div class="yui3-u-1-6">
-                <div class="cell" id="layout">
-                    <label for="grid-layout">Type of Layout</label><br/>
-                    <input type="radio" name="grid-layout" id="grid-layout-fixed" checked /> <small>Fixed</small>
-                    <input type="radio" name="grid-layout" id="grid-layout-fluid" /> <small>Fluid</small>
+                <div class="yui3-u-1-6">
+                    <div class="cell" id="layout">
+                        <label for="grid-layout">Type of Layout</label><br/>
+                        <input type="radio" name="grid-layout" id="grid-layout-fixed" checked /> <small>Fixed</small>
+                        <input type="radio" name="grid-layout" id="grid-layout-fluid" /> <small>Fluid</small>
+                    </div>
                 </div>
-            </div>
-            <!--
-            <div class="yui3-u-1-5">
-                <div class="cell" id="responsive">
-                    <label for="grid-gutter">Gutter</label>
-                    <input type="text" id="grid-gutter"  value="6" /><small>px</small>
+                <!--
+                <div class="yui3-u-1-5">
+                    <div class="cell" id="responsive">
+                        <label for="grid-gutter">Gutter</label>
+                        <input type="text" id="grid-gutter"  value="6" /><small>px</small>
+                    </div>
                 </div>
-            </div>
-            -->
-            <div class="yui3-u-1-6">
-                <div class="cell" id="responsive">
-                    <label for="grid-responsive">Responsive</label><br/>
-                    <input type="radio" name="grid-responsive" id="grid-responsive-yes" /> <small>Yes</small>
-                    <input type="radio" name="grid-responsive" id="grid-responsive-no" checked/> <small>No</small>
+                -->
+                <div class="yui3-u-1-6">
+                    <div class="cell" id="responsive">
+                        <label for="grid-responsive">Responsive</label><br/>
+                        <input type="radio" name="grid-responsive" id="grid-responsive-yes" /> <small>Yes</small>
+                        <input type="radio" name="grid-responsive" id="grid-responsive-no" checked/> <small>No</small>
+                    </div>
                 </div>
-            </div>
-            <div class="yui3-u-1">
-                <div class="cell" id="media-queries">
-                    <label>Media Queries</label><br/>
-                    <div id="current-media-queries"></div>
-                    <input type="button" id="default-media-queries" value="Use Defaults" disabled/>
-                    <input type="button" id="add-media-queries" value="Add" disabled/>
+                <div class="yui3-u-1-3">
+                    <div class="cell" id="media-queries">
+                        <label>Media Queries</label><br/>
+                        <span id="current-media-queries"></span>
+                        <input type="button" class="yui3-button" id="default-media-queries" value="Use Defaults" disabled/>
+                        <input type="button" class="yui3-button notice" id="add-media-queries" value="Add" disabled/>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div id="demo" class="yui3-u-1">
             <h3>Demo</h3>
-            <div id="demo-html">
+            <div id="d">
 
             </div>
 
             <h3>Grid CSS</h3>
+<!--             <div class="centered">
+                <input class='yui3-button notice' id="show-css-button" value="Show CSS"/>
+            </div> -->
             <div id="demo-css">
 
             </div>
