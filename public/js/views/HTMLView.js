@@ -17,7 +17,7 @@ YUI.add('htmlView', function(Y, name) {
       ATTRS: {
           container: {
                   valueFn: function () {
-                  return Y.one('#demo-html');
+                  return Y.one('#d');
               }
           }
       }
