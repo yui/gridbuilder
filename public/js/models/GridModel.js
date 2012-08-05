@@ -27,7 +27,10 @@ YUI.add('gridModel', function(Y, name) {
             });
 
             Y.Handlebars.registerHelper('groupUnits', function (classPrefix, unitClassName, unitsArr) {
-                var i = 0, str = '.yui3-u-1, ';
+                var i = 0, 
+                    //add the first unit
+                    str = '.' + classPrefix + unitClassName + '-1';
+
                 for (; i < unitsArr.length; i++) {
 
                     str += '.' + classPrefix + unitClassName + '-' + unitsArr[i].span + '-' + unitsArr[i].total;
@@ -54,6 +57,9 @@ YUI.add('gridModel', function(Y, name) {
                 return str;
 
             });
+
+            //Fire off an initial grid
+            this.update();
         },
 
 
@@ -106,7 +112,8 @@ YUI.add('gridModel', function(Y, name) {
                 isResponsive: this.get("isResponsive"),
                 units: this.generateUnits(this.get("columns")),
                 mediaQueries: this.get("mediaQueries"),
-                useDefaultMediaQueries: this.get("useDefaultMediaQueries")
+                useDefaultMediaQueries: this.get("useDefaultMediaQueries"),
+                internalPrefix: this.get("_internalPrefix")
             });
 
             this.set("css", css);
@@ -123,7 +130,6 @@ YUI.add('gridModel', function(Y, name) {
             columns = this.get("columns"),
             html = '<' + tagName + ' class="' +  classPrefix +
                        className + '-' + responsiveClassName + '">',
-            ratio,
             i;
 
             for (i = 0; i < columns; i++) {
@@ -157,7 +163,7 @@ YUI.add('gridModel', function(Y, name) {
         },
 
         classPrefix: {
-          value: 'yui3-'
+          value: 'y-'
         },
 
         unitClassName: {
@@ -197,6 +203,10 @@ YUI.add('gridModel', function(Y, name) {
 
         useDefaultMediaQueries: {
             value: true
+        },
+
+        _internalPrefix: {
+            value: ''
         },
 
         /*
