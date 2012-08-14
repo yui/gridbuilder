@@ -1,7 +1,7 @@
 /* Module dependencies */
 
 var express = require('express');
-
+var port = process.env.PORT || 5000;
 /* Application set-up */
 
 var app = module.exports = express.createServer();
@@ -34,5 +34,5 @@ app.get('/:path', function (req, res) {
 
 /* Start server */
 
-app.listen(5000);
+app.listen(port);
 console.log('Server running listening on port %d in %s mode', app.address().port, app.settings.env);
