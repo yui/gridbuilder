@@ -79,8 +79,63 @@
 
     {{! DEFAULT MEDIA QUERIES }}
 
-    {{#if useDefaultMediaQueries}}
+    {{#if ../useDefaultMediaQueries.phone}}
 
+        @media screen and (max-width:480px) {
+            .{{../../classPrefix}}{{../../className}}-{{../../responsiveClassName}} > [class ^= "{{../../classPrefix}}{{../../unitClassName}}"] {
+                width:100%;
+            }
+        }
+
+    {{/if}}
+
+    {{#if ../useDefaultMediaQueries.phoneTablet}}
+
+        @media screen and (max-width:767px) {
+
+            .{{../../classPrefix}}{{../../className}}-{{../../responsiveClassName}} > [class ^= "{{../../classPrefix}}{{../../unitClassName}}"] {
+                width:100%;
+            }
+
+            // Show
+            .visible-phone     { display: inherit !important; } // Use inherit to restore previous behavior
+            // Hide
+            .hidden-phone      { display: none !important; }
+            // Hide everything else
+            .hidden-desktop    { display: inherit !important; }
+            .visible-desktop   { display: none !important; }
+
+        }
+
+    {{/if}}
+
+    {{#if ../useDefaultMediaQueries.tablet}}
+
+        @media screen and (min-width: 768px and max-width:979px) {
+
+            // Show
+            .visible-tablet    { display: inherit !important; }
+            // Hide
+            .hidden-tablet     { display: none !important; }
+            // Hide everything else
+            .hidden-desktop    { display: inherit !important; }
+            .visible-desktop   { display: none !important ; }
+
+        }
+
+    {{/if}}
+
+
+    {{#if ../useDefaultMediaQueries.default}}
+
+        @media screen and (min-width:980px) {
+            .visible-phone     { display: none !important; }
+            .visible-tablet    { display: none !important; }
+            .visible-desktop   { } // Don't set initially
+            .hidden-phone      { }
+            .hidden-tablet     { }
+            .hidden-desktop    { display: none !important; }
+        }
 
     {{/if}}
 
@@ -92,11 +147,6 @@
 
         {{! Generate the @Media query using the min and max values provided}}
         {{{generateMediaQuery this.min this.max}}} {
-
-
-            .{{../../classPrefix}}{{../../className}}-{{../../responsiveClassName}} {
-                width:100%;
-            }
 
             {{! Collapse all elements that are direct descendents of .yui3-g-responsive > "yui3-u" (default) }}
             .{{../../classPrefix}}{{../../className}}-{{../../responsiveClassName}} > [class ^= "{{../../classPrefix}}{{../../unitClassName}}"] {
