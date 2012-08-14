@@ -8,15 +8,25 @@
                 },
                 
                 controlView: {
-                    fullpath: '/public/js/views/ControlView.js'
+                    fullpath: '/public/js/views/ControlView.js',
+                    requires: ['addMediaQueryView', 'editMediaQueryView']
                 },
                 
                 widthView: {
                     fullpath: '/public/js/views/WidthView.js'
                 },
 
+
+                addMediaQueryView: {
+                    fullpath: '/public/js/views/AddMediaQueryView.js'
+                },
+
                 editMediaQueryView: {
                     fullpath: '/public/js/views/EditMediaQueryView.js'
+                },
+
+                defaultMediaQueryView: {
+                    fullpath: '/public/js/views/defaultMediaQueryView.js'
                 },
                 
                 gridModel: {
@@ -24,7 +34,7 @@
                 },
                 
             }
-        }).use('app', 'cssView', 'htmlView', 'controlView', 'widthView', 'editMediaQueryView', 'gridModel', function (Y) {
+        }).use('app', 'cssView', 'htmlView', 'controlView', 'widthView', 'gridModel', function (Y) {
 
             var app = new Y.App({
                 container    : '#wrapper',
@@ -50,4 +60,7 @@
 
             //Track Screen Size
             var screenSizeDisplayer = new Y.GB.WidthView();
+
+            //enable pretty syntax highlighting
+            //prettyPrint();
         });
