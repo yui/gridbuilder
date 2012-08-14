@@ -14,9 +14,13 @@ html {
   background: #eee;
 }
 body {
-  font-family: "HelveticaNeue-Light", sans-serif;
-  font-weight: 300;
+  font-family: sans-serif;
+  font-weight: normal;
   height: 100%;
+}
+input[type='button'] {
+  -webkit-appearance: none;
+  border-radius: 0;
 }
 input,
 textarea,
@@ -33,14 +37,32 @@ select {
 .hidden {
   display: none;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
 h1 {
   color: #666666;
-  text-transform: uppercase;
   font-weight: 500;
 }
+h3 span {
+  color: #666666;
+  font-weight: normal;
+}
 .notice {
-  background-color: #1B7AE0;
+  background-color: #1b7ae0;
   color: white;
+}
+.delete {
+  background-color: #c43c35;
+  color: white;
+}
+.minibutton {
+  font-size: 13px;
 }
 #wrapper {
   width: 100%;
@@ -79,6 +101,9 @@ h1 {
   font-size: 70%;
   color: #666666;
   font-weight: bold;
+}
+.cell li {
+  text-transform: none;
 }
 .cell label {
   margin: 0 10px 10px 0;
@@ -136,10 +161,10 @@ h1 {
   text-transform: uppercase;
   color: darekn(#666666, 30%);
   text-align: center;
-  font-weight: normal;
+  font-weight: 500;
 }
 .demo-unit {
-  height: 350px;
+  height: 150px;
   background: #fff4a5;
   border: 2px dashed #d8be00;
 }
@@ -153,4 +178,18 @@ h1 {
   height: 300px;
   line-height: 1.8em;
   overflow-y: scroll;
+  margin-bottom: 20px;
+}
+p.desc {
+  font-size: 80%;
+  color: #666666;
+  font-weight: bold;
+}
+.dmq-button[value='Add'] {
+  background: #57a957;
+  color: #ffffff;
+}
+.dmq-button[value='Remove'] {
+  background: #c43c35;
+  color: #ffffff;
 }
