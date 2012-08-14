@@ -13,27 +13,29 @@ YUI.add('editMediaQueryView', function(Y, name) {
           panel = this.get('panel');
 
           if (panel === undefined) {
+            console.log(model.toJSON());
             panel = new Y.Panel({
               srcNode: container,
-              headerContent: '<h3 class="yui3-u-1">Edit Media Query</h3>',
-              bodyContent: Y.Lang.sub(template, {id: model.get('id')}), 
+              bodyContent: Y.Lang.sub(template, model.toJSON()), 
               centered: true,
-              width: 400,
+              width: 500,
               modal:true,
               buttons: {
                 footer: [
                     {
-                        name  : 'cancel',
-                        label : 'Cancel',
-                        action: function(e) {
-                          panel.hide();
-                        }
+                        name  : 'Delete',
+                        label : 'Delete',
+                        classNames: 'minibutton delete',
+                        action: 'deleteMediaQuery'
                     },
 
                     {
-                        name     : 'proceed',
+                        name     : 'Ok',
                         label    : 'OK',
-                        action   : 'onOK'
+                        classNames: 'minibutton',
+                        action: function(e) {
+                          panel.hide();
+                        }
                     }
                 ]
             }
@@ -44,7 +46,7 @@ YUI.add('editMediaQueryView', function(Y, name) {
           }
 
           else {
-            panel.set('bodyContent', Y.Lang.sub(template, {id: model.get('id')}));
+            panel.set('bodyContent', Y.Lang.sub(template, model.toJSON()));
             panel.show();
           }
           return this;
