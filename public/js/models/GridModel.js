@@ -3,13 +3,13 @@ YUI.add('gridModel', function(Y, name) {
 
 
         initializer: function () {
-            console.log("INITIALIZER FOR MODEL");
+            var self = this;
 
             this.after('columnsChange', this.update, this);
             this.after('widthChange', this.update, this);
             this.after('usePixelsChange', this.update, this);
             this.after('isResponsiveChange', this.update, this);
-            this.after('mediaQueriesChange', this.update, this);
+            this.after('useDefaultMediaQueriesChange', this.update, this);
 
             Y.Handlebars.registerHelper('computePercent', function (span, total) {
                 var val = Math.round(span/total * 10000000) / 100000;
@@ -58,6 +58,7 @@ YUI.add('gridModel', function(Y, name) {
 
             });
 
+
             //Fire off an initial grid
             this.update();
         },
@@ -82,6 +83,7 @@ YUI.add('gridModel', function(Y, name) {
         },
 
         update: function () {
+            Y.log("Updating Grid...");
             var self = this;
             Y.io('../public/handlebars/grid.handlebars', {
                 on: {
@@ -185,7 +187,7 @@ YUI.add('gridModel', function(Y, name) {
         },
 
         columns: {
-          value: 24,
+          value: 12,
           validator: Y.Lang.isNumber
         },
 
@@ -202,7 +204,12 @@ YUI.add('gridModel', function(Y, name) {
         },
 
         useDefaultMediaQueries: {
-            value: true
+            value: {
+                phone: false,
+                phoneTablet: false,
+                tablet: false,
+                default: false
+            }
         },
 
         _internalPrefix: {
