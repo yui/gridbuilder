@@ -9,7 +9,7 @@
                 
                 controlView: {
                     fullpath: '/public/js/views/ControlView.js',
-                    requires: ['addMediaQueryView', 'editMediaQueryView']
+                    requires: ['addMediaQueryView', 'editMediaQueryView', 'defaultMediaQueryView']
                 },
                 
                 widthView: {
