@@ -15,7 +15,7 @@ YUI.add('controlView', function(Y, name) {
 
       initializer: function (config) {
           var model = this.get("model");
-          model.after("mediaQueriesChange", this.updateMediaQueries, this);
+          //model.after("useDefaultMediaQueriesChange", this.updateMediaQueries, this);
       },
 
       render: function () {
@@ -76,58 +76,98 @@ YUI.add('controlView', function(Y, name) {
       },
 
       defaultMediaQueriesClicked: function(e) {
-          this.get("model").set("mediaQueries", this.get("defaultMediaQueries"));
+        var defaultMediaQueryView = this.get("defaultMediaQueryView"),
+        model = this.get('model'),
+        dmq = model.get('useDefaultMediaQueries'),
+        self = this, 
+        sub;
+
+        if (defaultMediaQueryView === undefined) {
+          Y.log("Instantiating a new DefaultMediaQueryView...");
+          defaultMediaQueryView = new Y.GB.DefaultMediaQueryView({model: new Y.Model(dmq)});
+          this.set("defaultMediaQueryView", defaultMediaQueryView);
+        }
+
+        else {
+          defaultMediaQueryView.set('model', new Y.Model(dmq));
+        }
+
+        defaultMediaQueryView.render();
+
+        defaultMediaQueryView.on('update', function(e) {
+          //pass the properties in explicitly since 'e' is an eventFacade and has other properties.
+          //Revert undefined to false.
+          model.set('useDefaultMediaQueries', {
+            phone: e.phone || false,
+            phoneTablet: e.phoneTablet || false,
+            tablet: e.tablet || false,
+            default: e.default || false
+          });
+          Y.log(model.toJSON());
+        });
       },
 
       addMediaQueryClicked: function(e) {
-          alert("Add Media Queries Clicked");
-      },
+          var addMediaQueryView = this.get("addMediaQueryView"),
+          addMqModel = {
+            id: undefined,
+            name: undefined,
+            max: undefined,
+            min: undefined  
+          };
 
-      updateMediaQueries: function (e) {
-          Y.log(e);
-          var html = "",
-              i = 0,
-              candyTemplate = this.get("candyTemplate");
-
-          Y.log(candyTemplate);
-          for (; i < e.newVal.length; i++) {
-              html += Y.Lang.sub(candyTemplate, {mqId: e.newVal[i].id, content: e.newVal[i].id});
-          }
-          this.get("candyContainer").setHTML(html);
-
-          this._mqSubscription = this.get("container").on("click", this.mediaQueryClicked, this);
-
-      },
-
-      mediaQueryClicked: function(e) {
-        var mq, 
-          defaultMq, 
-          editMediaQueryView = this.get("editMediaQueryView");
-        if (Y.one(e.target).hasClass("candy")) {
-          mq = Y.one(e.target);
-          
-          //Get the appropriate media query object.
-          defaultMq = Y.Array.find(this.get("defaultMediaQueries"), function(item) {
-            return (item.id === mq.getAttribute("data-mqId")) ? true : false;
-          }, this);
-
-          if (editMediaQueryView === undefined) {
-            editMediaQueryView = new Y.GB.EditMediaQueryView({model: new Y.Model(defaultMq)})
+          if (addMediaQueryView === undefined) {
+            addMediaQueryView = new Y.GB.AddMediaQueryView({model: new Y.Model(addMqModel)});
           }
           else {
-            editMediaQueryView.set('model', new Y.Model(defaultMq));
+            addMediaQueryView.set('model', new Y.Model(defaultMq));
           }
-
-          this.set("editMediaQueryView", editMediaQueryView);
-          editMediaQueryView.render();
-
-        }
+          
+          addMediaQueryView.render();
       },
 
+      // updateMediaQueries: function (e) {
+      //     var html = "",
+      //         i = 0,
+      //         candyTemplate = this.get("candyTemplate"),
+      //         defaultMq = this.get("defaultMediaQueries");
 
+      //     Y.log(candyTemplate);
+      //     for (; i < defaultMq.length; i++) {
+      //         html += Y.Lang.sub(candyTemplate, {mqId: defaultMq[i].id, description: defaultMq[i].description, name: defaultMq[i].name});
+      //     }
+      //     this.get("candyContainer").setHTML(html);
 
-      //Subscription object for the click handler on the media query candies
-      _mqSubscription: undefined
+      //     this._mqSubscription = this.get("container").on("click", this.mediaQueryClicked, this);
+
+      // },
+
+      // mediaQueryClicked: function(e) {
+      //   var mq, 
+      //     defaultMq, 
+      //     editMediaQueryView = this.get("editMediaQueryView");
+      //   if (Y.one(e.target).hasClass("candy")) {
+      //     mq = Y.one(e.target);
+          
+      //     //Get the appropriate media query object.
+      //     defaultMq = Y.Array.find(this.get("defaultMediaQueries"), function(item) {
+      //       return (item.id === mq.getAttribute("data-mqId")) ? true : false;
+      //     }, this);
+
+      //     if (editMediaQueryView === undefined) {
+      //       editMediaQueryView = new Y.GB.EditMediaQueryView({model: new Y.Model(defaultMq)})
+      //     }
+      //     else {
+      //       editMediaQueryView.set('model', new Y.Model(defaultMq));
+      //     }
+
+      //     this.set("editMediaQueryView", editMediaQueryView);
+      //     editMediaQueryView.render();
+
+      //   }
+      // },
+      // //Subscription object for the click handler on the media query candies
+      // _mqSubscription: undefined
 
   }, {
       ATTRS: {
@@ -141,7 +181,7 @@ YUI.add('controlView', function(Y, name) {
           },
 
           candyTemplate: {
-              value: '<span class="candy yui3-u" data-mqId="{mqId}">{content}</span>'
+              value: '<span class="candy yui3-u" data-mqId="{mqId}">{mqId}</span>'
           },
 
           candyContainer: {
@@ -150,17 +190,15 @@ YUI.add('controlView', function(Y, name) {
               }
           },
 
-          defaultMediaQueries: {
-              value: [
-                  {
-                      max: 767,
-                      id: '< 768px',
-                      collapse: 'all'
-                  }
-              ]
+          editMediaQueryView: {
+            value: undefined
           },
 
-          editMediaQueryView: {
+          addMediaQueryView: {
+            value: undefined
+          },
+
+          defaultMediaQueryView: {
             value: undefined
           }
       }
@@ -170,6 +208,6 @@ YUI.add('controlView', function(Y, name) {
 	Y.namespace("GB").ControlView = ControlView;
 	
 }, '0.0.1', {
-	requires: ['node', 'view', 'editMediaQueryView']
+	requires: ['node', 'view', 'editMediaQueryView', 'addMediaQueryView', 'defaultMediaQueryView']
 });
 
