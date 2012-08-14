@@ -26,7 +26,7 @@
                 },
 
                 defaultMediaQueryView: {
-                    fullpath: '/public/js/views/defaultMediaQueryView.js'
+                    fullpath: '/public/js/views/DefaultMediaQueryView.js'
                 },
                 
                 gridModel: {
