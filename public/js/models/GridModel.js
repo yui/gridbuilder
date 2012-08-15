@@ -5,11 +5,11 @@ YUI.add('gridModel', function(Y, name) {
         initializer: function () {
             var self = this;
 
-            this.after('columnsChange', this.update, this);
-            this.after('widthChange', this.update, this);
-            this.after('usePixelsChange', this.update, this);
-            this.after('isResponsiveChange', this.update, this);
-            this.after('useDefaultMediaQueriesChange', this.update, this);
+            // this.after('columnsChange', this.update, this);
+            // this.after('widthChange', this.update, this);
+            // this.after('usePixelsChange', this.update, this);
+            // this.after('isResponsiveChange', this.update, this);
+            // this.after('useDefaultMediaQueriesChange', this.update, this);
 
             Y.Handlebars.registerHelper('computePercent', function (span, total) {
                 var val = Math.round(span/total * 10000000) / 100000;
@@ -60,7 +60,7 @@ YUI.add('gridModel', function(Y, name) {
 
 
             //Fire off an initial grid
-            this.update();
+            //this.update();
         },
 
 
@@ -80,67 +80,6 @@ YUI.add('gridModel', function(Y, name) {
             }
 
             return unitsArr;
-        },
-
-        update: function () {
-            Y.log("Updating Grid...");
-            var self = this;
-            Y.io('../public/handlebars/grid.handlebars', {
-                on: {
-                    success: function(id, response) {
-                        Y.log("Success with response");
-                        self.toCSS(response.responseText);
-                    },
-
-                    failure: function (id, o, args) {
-                        Y.log("Failed with status: " + o.statusText);
-                    }
-
-                }
-            });
-        },
-
-        toCSS: function(source) {
-            var template = Y.Handlebars.compile(source),
-            css = template({
-                width: this.get('width'),
-                numColumns: this.get('columns'),
-                usePixels: this.get("usePixels"),
-                classPrefix: this.get("classPrefix"),
-                unitClassName: this.get("unitClassName"),
-                className: this.get("className"),
-                offsetClassName: this.get("offsetClassName"),
-                responsiveClassName: this.get("responsiveClassName"),
-                isResponsive: this.get("isResponsive"),
-                units: this.generateUnits(this.get("columns")),
-                mediaQueries: this.get("mediaQueries"),
-                useDefaultMediaQueries: this.get("useDefaultMediaQueries"),
-                internalPrefix: this.get("_internalPrefix")
-            });
-
-            this.set("css", css);
-            return css;
-        },
-
-        //Provides the HTML for the highest denominator columns (1-24 in a 24-col grid)
-        toColumnsHTML: function() {
-            var tagName = this.get("tagName"),
-            classPrefix = this.get("classPrefix"),
-            unitClassName = this.get("unitClassName"),
-            className = this.get("className"),
-            responsiveClassName = this.get("responsiveClassName"),
-            columns = this.get("columns"),
-            html = '<' + tagName + ' class="' +  classPrefix +
-                       className + '-' + responsiveClassName + '">',
-            i;
-
-            for (i = 0; i < columns; i++) {
-                html += '<div class="' + classPrefix + unitClassName +
-                        '-' + '1' + '-' + columns + '"><div class="demo-unit"></div></div>';
-            }
-
-            html += '</div>';
-            return html;
         }
 
     }, {

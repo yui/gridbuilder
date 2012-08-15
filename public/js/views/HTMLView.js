@@ -7,11 +7,43 @@ YUI.add('htmlView', function(Y, name) {
 
       render: function () {
           Y.log("Render HTML View");
-          var css = this.get("model").get('css');
-          Y.one("#demo-grid-styles").empty().set('text', css);
-          this.get("container").setHTML(this.get("model").toColumnsHTML());
+          this.renderCols();
+          this.renderResponsive();
           return this;
       },
+
+      renderCols: function () {
+        var css = this.get("model").get('css');
+        Y.one("#demo-grid-styles").empty().set('text', css);
+        this.get("container").setHTML(this.toColumnsHTML());
+        return this;
+      },
+
+      renderResponsive: function () {
+
+      },
+
+      toColumnsHTML: function () {
+        var model = this.get("model"),
+        tagName = model.get("tagName"),
+        classPrefix = model.get("classPrefix"),
+        unitClassName = model.get("unitClassName"),
+        className = model.get("className"),
+        responsiveClassName = model.get("responsiveClassName"),
+        columns = model.get("columns"),
+        html = '<' + tagName + ' class="' +  classPrefix +
+                   className + '-' + responsiveClassName + '">',
+        i;
+
+        for (i = 0; i < columns; i++) {
+            html += '<div class="' + classPrefix + unitClassName +
+                    '-' + '1' + '-' + columns + '"><div class="demo-unit"></div></div>';
+        }
+
+        html += '</div>';
+        return html;
+      },
+
       model: undefined,
   }, {
       ATTRS: {
