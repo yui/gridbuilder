@@ -18,18 +18,16 @@ body {
   font-weight: normal;
   height: 100%;
 }
+p {
+  font-size: 14px;
+}
 input[type='button'] {
   -webkit-appearance: none;
-  border-radius: 0;
 }
 input,
 textarea,
 select {
   margin-top: 6px;
-}
-#header {
-  background: black;
-  height: 2em;
 }
 .centered {
   text-align: center;
@@ -44,14 +42,37 @@ h4,
 h5,
 h6 {
   font-weight: bold;
+  color: darekn(#666666, 30%);
 }
-h1 {
-  color: #666666;
+.header {
+  height: 2em;
+  padding: 10px 20px 12px;
+  border: 1px solid #d9d9d9;
+}
+.header h1 {
+  margin: 5px 0 5px 10px;
+  font-weight: normal;
+}
+.header .sprite {
+  float: left;
+  background: transparent url('/public/img/yui_logo_sprite.gif') 0 0;
+  width: 80px;
+  height: 36px;
+}
+.header .sprite:hover {
+  background-position: 0 -36px;
+}
+#demo h3 {
+  text-transform: uppercase;
+  color: darekn(#666666, 30%);
+  text-align: center;
   font-weight: 500;
+  margin: 5px 0;
 }
 h3 span {
   color: #666666;
-  font-weight: normal;
+  font-weight: 600;
+  font-size: 90%;
 }
 .notice {
   background-color: #1b7ae0;
@@ -90,6 +111,8 @@ h3 span {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+  font-weight: bold;
+  color: #666666;
 }
 .cell {
   -webkit-box-shadow: 0 0 2px #d9d9d9;
@@ -98,12 +121,12 @@ h3 span {
   padding: 10px;
   min-height: 4.2em;
   text-transform: uppercase;
-  font-size: 70%;
-  color: #666666;
-  font-weight: bold;
+  font-size: 75%;
 }
 .cell li {
   text-transform: none;
+  line-height: 1.5em;
+  padding-top: 5px;
 }
 .cell label {
   margin: 0 10px 10px 0;
@@ -119,6 +142,11 @@ h3 span {
   border: 1px solid #d9d9d9;
   padding: 5px;
   width: 3.3em;
+}
+@media (max-width: 767px) {
+  #controlPanel .yui3-u-1-6 {
+    width: 50%;
+  }
 }
 .candy {
   background: #0babec;
@@ -157,16 +185,36 @@ h3 span {
   padding: 20px;
   text-align: center;
 }
-#demo > h3 {
-  text-transform: uppercase;
-  color: darekn(#666666, 30%);
-  text-align: center;
-  font-weight: 500;
-}
 .demo-unit {
   height: 150px;
   background: #fff4a5;
   border: 2px dashed #d8be00;
+  border-left: none;
+}
+.y-hidden-phone {
+  background: white;
+}
+.utility-unit {
+  height: 20px;
+  border: 1px;
+  border-style: solid;
+  border-color: #d9d9d9;
+  color: #666666;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  font-weight: bold;
+  font-size: 85%;
+  padding: 20px 10px;
+  margin: 10px;
+}
+@media (max-width: 767px) {
+  .demo-unit {
+    height: 75px;
+  }
 }
 #demo-css {
   -webkit-box-shadow: inset 0 0 5px #666666;

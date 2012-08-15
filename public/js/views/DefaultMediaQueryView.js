@@ -119,7 +119,7 @@ YUI.add('defaultMediaQueryView', function(Y, name) {
             srcNode: container,
             bodyContent: Y.Lang.sub(template, this._determineValue(model.toJSON())), 
             centered: true,
-            width: 800,
+            width: '80%',
             visible: true,
             modal:true,
             buttons: {

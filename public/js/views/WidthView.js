@@ -6,7 +6,6 @@ YUI.add('widthView', function(Y, name) {
 
       render: function () {
 				this.get('container').set('text', 'Window Width: ' + Y.one('window').get("winWidth"));
-				console.log('test');
       },
 			
       model: undefined,

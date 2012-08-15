@@ -26,20 +26,16 @@ body {
     font-weight: normal;
     height: 100%;
 }
+p {
+    font-size: 14px;
+}
 
 input[type='button'] {
     -webkit-appearance: none;
-    border-radius: 0;
 }
 
 input, textarea, select {
     margin-top: 6px;
-}
-
-#header {
-    background: black;
-    height: 2em;
-
 }
 
 .centered {
@@ -52,17 +48,48 @@ input, textarea, select {
 
 h1,h2,h3,h4,h5,h6 {
     font-weight: bold;
+    color: @darkGrey;
 }
 
-h1 {
-    color: @grey;
-    font-weight: 500;
+
+.header {
+    height: 2em;
+    padding: @padM @padL @padM*1.2;
+    border:1px solid @lightGrey;
+
+    h1 {
+        margin: @padS 0 @padS @padM;
+        font-weight: normal;
+    }
+    .sprite {
+        float:left;
+        background: transparent url('/public/img/yui_logo_sprite.gif') 0 0;
+        width: 80px;
+        height: 36px;
+
+        &:hover {
+            background-position: 0 -36px;
+        }
+    }
+    
 }
+
+
+#demo h3 {
+    text-transform: uppercase;
+    color: @darkGrey;
+    text-align:center;
+    font-weight: 500;
+    margin: @padS 0;
+}
+
 
 h3 span {
     color: @grey;
-    font-weight:normal;
+    font-weight: 600;
+    font-size: 90%;
 }
+
 .notice{
     background-color:@blue;
     color:white;
@@ -91,18 +118,20 @@ h3 span {
     .box-shadow(0 0 3px @grey);
     .gradient(#FAFAFA, #EAEAEA, #FAFAFA);
     .rounded(5px);
+    font-weight: bold;
+    color: @grey;
 }
 .cell {
     .box-shadow(0 0 2px @lightGrey);
     padding: @padM;
     min-height: 4.2em;
     text-transform: uppercase;
-    font-size:70%;
-    color: @grey;
-    font-weight: bold;
+    font-size:75%;
 
     li {
         text-transform: none;
+        line-height:1.5em;
+        padding-top:@padS;
     }
 
     label {
@@ -116,6 +145,10 @@ h3 span {
         padding: @padS;
         width: 3.3em;
     }
+}
+
+@media (max-width:767px) {
+    #controlPanel .yui3-u-1-6 { width:50%; }
 }
 
 .candy {
@@ -152,18 +185,37 @@ h3 span {
     text-align: center;
 }
 
-#demo > h3 {
-    text-transform: uppercase;
-    color: @darkGrey;
-    text-align:center;
-    font-weight: 500;
-}
 
 .demo-unit {
     height:150px;
     background: @yellow;
     border:2px dashed darken(@yellow, 40%);
+    border-left:none;
 }
+
+.y-hidden-phone {
+    background: white;
+}
+
+
+.utility-unit {
+    height: 20px;
+    border: 1px;
+    border-style: solid;
+    border-color: @lightGrey;
+    color: @grey;
+    .rounded(5px);
+    font-weight:bold;
+    font-size:85%;
+    padding: @padL @padM;
+    margin: @padM;
+}
+@media (max-width:767px) {
+    .demo-unit {height:75px;}
+}
+
+
+
 #demo-css {
     .box-shadow(inset 0 0 5px @grey);
     background: lighten(@grey, 55%);
