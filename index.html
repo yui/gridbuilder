@@ -15,7 +15,13 @@
 </head>
 <body class="yui3-g yui3-skin-sam">
     <div id="wrapper" class="yui3-g">
-        <h1 class="yui3-u-1 centered">YUI grid builder</h1>
+
+        <div class="yui3-u-1">
+            <div class="header">
+                <div class="sprite"></div>
+                <h1 class="yui3-u">Grid Builder</h1>
+            </div>
+        </div>
 
         <div class="yui3-u-1">
             <div class="yui3-g" id="controlPanel">
@@ -34,8 +40,8 @@
                 <div class="yui3-u-1-6">
                     <div class="cell" id="layout">
                         <label for="grid-layout">Type of Layout</label><br/>
-                        <input type="radio" name="grid-layout" id="grid-layout-fixed" checked /> <small>Fixed</small>
-                        <input type="radio" name="grid-layout" id="grid-layout-fluid" /> <small>Fluid</small>
+                        <input type="radio" name="grid-layout" id="grid-layout-fixed"  /> <small>Fixed</small>
+                        <input type="radio" name="grid-layout" id="grid-layout-fluid" checked /> <small>Fluid</small>
                     </div>
                 </div>
                 <!--
@@ -49,16 +55,16 @@
                 <div class="yui3-u-1-6">
                     <div class="cell" id="responsive">
                         <label for="grid-responsive">Responsive</label><br/>
-                        <input type="radio" name="grid-responsive" id="grid-responsive-yes" /> <small>Yes</small>
-                        <input type="radio" name="grid-responsive" id="grid-responsive-no" checked/> <small>No</small>
+                        <input type="radio" name="grid-responsive" id="grid-responsive-yes" checked/> <small>Yes</small>
+                        <input type="radio" name="grid-responsive" id="grid-responsive-no" /> <small>No</small>
                     </div>
                 </div>
                 <div class="yui3-u-1-3">
                     <div class="cell" id="media-queries">
                         <label>Media Queries</label><br/>
                         <span id="current-media-queries"></span>
-                        <input type="button" class="yui3-button" id="default-media-queries" value="Use Defaults" disabled/>
-                        <input type="button" class="yui3-button notice" id="add-media-queries" value="Add" disabled/>
+                        <input type="button" class="yui3-button" id="default-media-queries" value="Edit Defaults"/>
+                        <input type="button" class="yui3-button notice" id="add-media-queries" value="Add"/>
                     </div>
                 </div>
             </div>
@@ -70,6 +76,20 @@
 
             </div>
 
+            <div id="d-responsive" class="yui3-g">
+                <h3 class="yui3-u-1">Responsive Helper Classes</h3>
+                <p class='yui3-u-1'>If you've chosen a responsive grid, resize your browser window to see the helper classes control which elements show and hide. </p>
+                <div class="y-hidden-phone yui3-u-1-3">
+                    <div class="utility-unit green-unit">Hidden on Phone</div>
+                </div>
+                <div class="y-hidden-tablet yui3-u-1-3">
+                     <div class="utility-unit blue-unit">Hidden on Tablet</div>
+                </div>
+                <div class="y-hidden-desktop yui3-u-1-3">
+                     <div class="utility-unit red-unit">Hidden on Desktop</div>
+                </div>
+            </div>
+
             <h3>Grid CSS</h3>
 <!--             <div class="centered">
                 <input class='yui3-button notice' id="show-css-button" value="Show CSS"/>
@@ -78,7 +98,7 @@
             </div>
         </div>
     </div>
-    <div id="screen-width" class="yui3-u-1">This bar displays the width as you resize the width.</div>
+    <div id="screen-width" class="yui3-u-1">This bar displays the screen width as you resize the window.</div>
 
     <div id="panel-content"></div>
 
@@ -101,7 +121,7 @@
     <script id="default-media-query-view" type='text/x-template'>
         <div class="yui3-widget-bd yui3-u-1">
 
-            <h2>What media queries would you like to add?</h2>
+            <h2>What media queries would you like to edit?</h2>
             <div class="yui3-g">
                 <div class="yui3-u-1-2">
                     <div class="cell">
