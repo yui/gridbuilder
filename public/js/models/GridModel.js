@@ -116,7 +116,7 @@ YUI.add('gridModel', function(Y, name) {
         },
 
         usePixels: {
-          value: true,
+          value: false,
           validator: Y.Lang.isBoolean
         },
 
@@ -131,7 +131,7 @@ YUI.add('gridModel', function(Y, name) {
         },
 
         isResponsive: {
-            value: false
+            value: true
         },
 
         css: {
@@ -144,10 +144,10 @@ YUI.add('gridModel', function(Y, name) {
 
         useDefaultMediaQueries: {
             value: {
-                phone: false,
-                phoneTablet: false,
-                tablet: false,
-                default: false
+                phone: true,
+                phoneTablet: true,
+                tablet: true,
+                default: true
             }
         },
 
