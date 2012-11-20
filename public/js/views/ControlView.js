@@ -39,13 +39,17 @@ YUI.add('controlView', function(Y, name) {
 
       layoutChanged: function(e) {
           var id = e.target._node.id,
-              model = this.get("model");
+              model = this.get("model"),
+              widthInput = Y.one('#grid-width');
 
           if (id === 'grid-layout-fixed') {
               model.set("usePixels", true);
+              widthInput.removeAttribute('disabled');
+
           }
           else if (id === 'grid-layout-fluid') {
               model.set("usePixels", false);
+              widthInput.setAttribute('disabled', true);
           }
       },
 
