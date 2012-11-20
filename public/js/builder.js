@@ -12,10 +12,6 @@
                     requires: ['addMediaQueryView', 'editMediaQueryView', 'defaultMediaQueryView']
                 },
                 
-                widthView: {
-                    fullpath: '/public/js/views/WidthView.js'
-                },
-
 
                 addMediaQueryView: {
                     fullpath: '/public/js/views/AddMediaQueryView.js'
@@ -34,7 +30,7 @@
                 },
                 
             }
-        }).use('app', 'cssView', 'htmlView', 'controlView', 'widthView', 'gridModel', function (Y) {
+        }).use('app', 'cssView', 'htmlView', 'controlView', 'gridModel', function (Y) {
 
             var app = new Y.App({
                 container    : '#wrapper',
@@ -59,7 +55,7 @@
             htmlView.render();
 
             //Track Screen Size
-            var screenSizeDisplayer = new Y.GB.WidthView();
+            //var screenSizeDisplayer = new Y.GB.WidthView();
 
             //enable pretty syntax highlighting
             //prettyPrint();
