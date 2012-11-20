@@ -28,7 +28,7 @@
                 <div class="yui3-u-1-6">
                     <div class="cell" id="width">
                         <label for="grid-width">Width</label>
-                        <input type="text" id="grid-width" value="960" /> <small>px</small>
+                        <input type="text" id="grid-width" value="960" disabled='true'/> <small>px</small>
                     </div>
                 </div>
                 <div class="yui3-u-1-6">
@@ -80,13 +80,13 @@
                 <h3 class="yui3-u-1">Responsive Helper Classes</h3>
                 <p class='yui3-u-1'>If you've chosen a responsive grid, resize your browser window to see the helper classes control which elements show and hide. </p>
                 <div class="y-hidden-phone yui3-u-1-3">
-                    <div class="utility-unit green-unit">Hidden on Phone</div>
+                    <div class="utility-unit green-unit">This container will be hidden on phones</div>
                 </div>
                 <div class="y-hidden-tablet yui3-u-1-3">
-                     <div class="utility-unit blue-unit">Hidden on Tablet</div>
+                     <div class="utility-unit blue-unit">This container will be hidden on tablets</div>
                 </div>
                 <div class="y-hidden-desktop yui3-u-1-3">
-                     <div class="utility-unit red-unit">Hidden on Desktop</div>
+                     <div class="utility-unit red-unit">This container will be showed on tablets</div>
                 </div>
             </div>
 
@@ -97,8 +97,14 @@
             <div id="demo-css" class="prettyprint">
             </div>
         </div>
+
+        <div class="footer" class="yui3-u-1">
+            <small class="yui3-u-1 centered">
+                Check out the <a href="layout.html" alt="Responsive Grids Tutorial">tutorial and example</a>. Send issues to <a href="http://twitter.com/tilomitra" alt='Tilo on Twitter'>@tilomitra</a>
+            </small>
+        </div>
     </div>
-    <div id="screen-width" class="yui3-u-1">This bar displays the screen width as you resize the window.</div>
+    <!-- <div id="screen-width" class="yui3-u-1">This bar displays the screen width as you resize the window.</div> -->
 
     <div id="panel-content"></div>
 
@@ -166,10 +172,6 @@
     </script>
 
     <script src="http://yui.yahooapis.com/3.5.1/build/yui/yui-debug.js"></script>
-    <!--
-    <script src="/public/js/prettify.js"></script>
-    <script src="/public/js/lang-css.js"></script>
-    -->
     <script src="/public/js/builder.js"></script>
 
 </body>
