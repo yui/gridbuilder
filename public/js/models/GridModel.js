@@ -32,11 +32,7 @@ YUI.add('gridModel', function(Y, name) {
                     str = '.' + classPrefix + unitClassName + '-1';
 
                 for (; i < unitsArr.length; i++) {
-
-                    str += '.' + classPrefix + unitClassName + '-' + unitsArr[i].span + '-' + unitsArr[i].total;
-                    if (unitsArr[i+1] !== undefined) {
-                        str += ', ';
-                    }
+                    str += ',.' + classPrefix + unitClassName + '-' + unitsArr[i].span + '-' + unitsArr[i].total;
                 }
 
                 return str;
