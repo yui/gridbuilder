@@ -9,8 +9,8 @@ YUI.add('controlView', function(Y, name) {
         '#grid-layout-fluid': {click: 'layoutChanged'},
         '#grid-responsive-yes': {click: 'responsiveChanged'},
         '#grid-responsive-no': {click: 'responsiveChanged'},
-        '#default-media-queries': {click: 'defaultMediaQueriesClicked'},
-        '#add-media-queries': {click: 'addMediaQueryClicked'}
+        '#default-media-queries': {click: 'defaultMediaQueriesClicked'}
+        //'#add-media-queries': {click: 'addMediaQueryClicked'}
       },
 
       initializer: function (config) {
@@ -110,7 +110,7 @@ YUI.add('controlView', function(Y, name) {
           Y.log(model.toJSON());
         });
       },
-
+      /*
       addMediaQueryClicked: function(e) {
           var addMediaQueryView = this.get("addMediaQueryView"),
           addMqModel = {
@@ -129,7 +129,7 @@ YUI.add('controlView', function(Y, name) {
           
           addMediaQueryView.render();
       },
-
+      */
       // updateMediaQueries: function (e) {
       //     var html = "",
       //         i = 0,

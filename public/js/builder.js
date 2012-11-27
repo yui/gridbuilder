@@ -13,9 +13,9 @@
                 },
                 
 
-                addMediaQueryView: {
-                    fullpath: '/public/js/views/AddMediaQueryView.js'
-                },
+                // addMediaQueryView: {
+                //     fullpath: '/public/js/views/AddMediaQueryView.js'
+                // },
 
                 editMediaQueryView: {
                     fullpath: '/public/js/views/EditMediaQueryView.js'
