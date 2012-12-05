@@ -68,9 +68,28 @@ h3 {
 .header .sprite:hover {
   background-position: 0 -36px;
 }
+
+.menu {
+  font-size:0.75em;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #666;
+  text-align: right;
+  color: #467FB8;
+}
+.menu a {
+  text-decoration: none;
+  
+}
+.menu ul {
+  margin-right:7em;
+}
+.menu li {
+  margin-right:30px;
+}
 #demo h3 {
   text-transform: uppercase;
-  color: darekn(#666666, 30%);
+  color: darken(#666666, 30%);
   text-align: center;
   font-weight: 500;
   margin: 5px 0;
@@ -103,7 +122,7 @@ h3 span {
 #controlPanel {
   margin: 20px;
   height: 100%;
-  border: 1px solid darekn(#666666, 30%);
+  border: 1px solid darken(#666666, 30%);
   -webkit-box-shadow: 0 0 3px #666666;
   -moz-box-shadow: 0 0 3px #666666;
   box-shadow: 0 0 3px #666666;
