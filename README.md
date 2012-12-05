@@ -18,3 +18,11 @@ Please submit all issues and feature requests through Github. It makes it easy t
 - Preview in various screen sizes (Cinematic Display, Desktop, Tablet,
 Phone)
 - Outputs CSS
+
+
+###Downloading and running locally
+If you want to clone the repo to run the app locally, make sure you run it from the `master` branch and not the `gh-pages` branch. The Github pages branch has some slight differences (the assets paths are different). The easiest way to get gridbuilder running locally is to clone the repo and run `foreman start`. 
+
+- `git clone https://github.com/yui/gridbuilder.git`
+- `cd gridbuilder`
+- foreman start
