@@ -1,3 +1,8 @@
+/*
+Copyright (c) 2012, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://yuilibrary.com/license/
+*/
 YUI.add('htmlView', function(Y, name) {
 	var HTMLView = Y.Base.create('htmlView', Y.View, [], {
       initializer: function () {
