@@ -1,14 +1,14 @@
         YUI({
             modules: {
                 cssView: {
-                    fullpath: '/public/js/views/CSSView.js'
+                    fullpath: 'https://raw.github.com/yui/gridbuilder/master/public/js/views/CSSView.js'
                 },
                 htmlView: {
-                    fullpath: '/public/js/views/HTMLView.js'
+                    fullpath: 'https://raw.github.com/yui/gridbuilder/master/public/js/views/HTMLView.js'
                 },
                 
                 controlView: {
-                    fullpath: '/public/js/views/ControlView.js',
+                    fullpath: 'https://raw.github.com/yui/gridbuilder/master/public/js/views/ControlView.js',
                     requires: ['addMediaQueryView', 'editMediaQueryView', 'defaultMediaQueryView']
                 },
                 
@@ -18,15 +18,15 @@
                 // },
 
                 editMediaQueryView: {
-                    fullpath: '/public/js/views/EditMediaQueryView.js'
+                    fullpath: 'https://raw.github.com/yui/gridbuilder/master/public/js/views/EditMediaQueryView.js'
                 },
 
                 defaultMediaQueryView: {
-                    fullpath: '/public/js/views/DefaultMediaQueryView.js'
+                    fullpath: 'https://raw.github.com/yui/gridbuilder/master/public/js/views/DefaultMediaQueryView.js'
                 },
                 
                 gridModel: {
-                    fullpath: '/public/js/models/GridModel.js'
+                    fullpath: 'https://raw.github.com/yui/gridbuilder/master/public/js/models/GridModel.js'
                 },
                 
             }
