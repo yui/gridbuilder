@@ -25,4 +25,4 @@ If you want to clone the repo to run the app locally, make sure you run it from 
 
 - `git clone https://github.com/yui/gridbuilder.git`
 - `cd gridbuilder`
-- foreman start
+- `foreman start`
