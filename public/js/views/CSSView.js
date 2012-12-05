@@ -20,7 +20,7 @@ YUI.add('cssView', function(Y, name) {
       update: function () {
           Y.log("Updating Grid CSS...");
           var self = this;
-          Y.io('https://raw.github.com/tilomitra/YUIGridBuilder/master/public/handlebars/grid.handlebars?login=tilomitra&token=4bb444c7a961067a67651552d16bbe19', {
+          Y.io('http://tilomitra.github.com/YUIGridBuilder/public/handlebars/grid.handlebars', {
               on: {
                   success: function(id, response) {
                       Y.log("Success with response");
