@@ -61,7 +61,7 @@ h3 {
 }
 .header .sprite {
   float: left;
-  background: transparent url('/public/img/yui_logo_sprite.gif') 0 0;
+  background: transparent url('http://tilomitra.github.com/YUIGridBuilder/public/img/yui_logo_sprite.gif') 0 0;
   width: 80px;
   height: 36px;
 }
