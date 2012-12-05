@@ -1,3 +1,8 @@
+/*
+Copyright (c) 2012, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://yuilibrary.com/license/
+*/
 YUI.add('editMediaQueryView', function(Y, name) {
   var EditMediaQueryView = Y.Base.create('editMediaQueryView', Y.View, [], {
       initializer: function () {
