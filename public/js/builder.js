@@ -1,7 +1,7 @@
         YUI({
             modules: {
                 cssView: {
-                    fullpath: 'https://raw.github.com/yui/gridbuilder/master/public/js/views/CSSView.js'
+                    fullpath: 'https://raw.github.com/tilomitra/YUIGridBuilder/gh-pages/public/js/views/CSSView.js?login=tilomitra&token=f445a2b8a1653eaddf16e8d5507513ab'
                 },
                 htmlView: {
                     fullpath: 'https://raw.github.com/yui/gridbuilder/master/public/js/views/HTMLView.js'
