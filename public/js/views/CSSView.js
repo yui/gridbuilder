@@ -20,7 +20,7 @@ YUI.add('cssView', function(Y, name) {
       update: function () {
           Y.log("Updating Grid CSS...");
           var self = this;
-          Y.io('../public/handlebars/grid.handlebars', {
+          Y.io('https://raw.github.com/yui/gridbuilder/master/public/handlebars/grid.handlebars', {
               on: {
                   success: function(id, response) {
                       Y.log("Success with response");
