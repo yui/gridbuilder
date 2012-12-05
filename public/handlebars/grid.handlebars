@@ -85,9 +85,9 @@
     {{! visible-* / hidden-* classes from Twitter Bootstrap with modifications to remove inherits and importants}}
     {{! https://github.com/twitter/bootstrap/blob/master/less/responsive-utilities.less }}
 
-    {{#if ../useDefaultMediaQueries.default}}
+    {{#if ../useDefaultMediaQueries.default.active}}
 
-        @media (min-width:980px) {
+        @media (min-width:{{../useDefaultMediaQueries.default.min}}px) {
             .{{../../classPrefix}}visible-phone     { display: none; }
             .{{../../classPrefix}}visible-tablet    { display: none; }
             .{{../../classPrefix}}visible-desktop   { }
@@ -101,9 +101,9 @@
     {{/if}}
 
 
-    {{#if ../useDefaultMediaQueries.phone}}
+    {{#if ../useDefaultMediaQueries.phone.active}}
 
-        @media (max-width:480px) {
+        @media (max-width:{{../useDefaultMediaQueries.phone.max}}px) {
             .{{../../classPrefix}}{{../../className}}-{{../../responsiveClassName}} > [class ^= "{{../../classPrefix}}{{../../unitClassName}}"] {
                 width:100%;
             }
@@ -111,9 +111,9 @@
 
     {{/if}}
 
-    {{#if ../useDefaultMediaQueries.phoneTablet}}
+    {{#if ../useDefaultMediaQueries.phoneTablet.active}}
 
-        @media (max-width:767px) {
+        @media (max-width:{{../useDefaultMediaQueries.phoneTablet.max}}px) {
 
             .{{../../classPrefix}}{{../../className}}-{{../../responsiveClassName}} > [class ^= "{{../../classPrefix}}{{../../unitClassName}}"] {
                 width:100%;
@@ -129,9 +129,9 @@
 
     {{/if}}
 
-    {{#if ../useDefaultMediaQueries.tablet}}
+    {{#if ../useDefaultMediaQueries.tablet.active}}
 
-        @media (min-width:768px) and (max-width:979px) {
+        @media (min-width:{{../useDefaultMediaQueries.tablet.min}}px) and (max-width:{{../useDefaultMediaQueries.tablet.max}}px) {
 
             
             .{{../../classPrefix}}visible-tablet    {}

@@ -81,33 +81,24 @@ YUI.add('controlView', function(Y, name) {
 
       defaultMediaQueriesClicked: function(e) {
         var defaultMediaQueryView = this.get("defaultMediaQueryView"),
-        model = this.get('model'),
-        dmq = model.get('useDefaultMediaQueries'),
-        self = this, 
-        sub;
+        model = this.get('model');
 
         if (defaultMediaQueryView === undefined) {
           Y.log("Instantiating a new DefaultMediaQueryView...");
-          defaultMediaQueryView = new Y.GB.DefaultMediaQueryView({model: new Y.Model(dmq)});
+          defaultMediaQueryView = new Y.GB.DefaultMediaQueryView({model: model});
           this.set("defaultMediaQueryView", defaultMediaQueryView);
         }
 
         else {
-          defaultMediaQueryView.set('model', new Y.Model(dmq));
+          defaultMediaQueryView.set('model', model);
         }
 
         defaultMediaQueryView.render();
 
-        defaultMediaQueryView.on('update', function(e) {
+        defaultMediaQueryView.on('updateMediaQueries', function(e) {
           //pass the properties in explicitly since 'e' is an eventFacade and has other properties.
           //Revert undefined to false.
-          model.set('useDefaultMediaQueries', {
-            phone: e.phone || false,
-            phoneTablet: e.phoneTablet || false,
-            tablet: e.tablet || false,
-            default: e.default || false
-          });
-          Y.log(model.toJSON());
+          model.set('useDefaultMediaQueries', e.mediaQueries);
         });
       },
       /*

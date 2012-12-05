@@ -43,6 +43,12 @@ h5,
 h6 {
   font-weight: bold;
   color: darekn(#666666, 30%);
+  margin: 0.5em 0;
+}
+
+h3 {
+  color: #999;
+  font-weight:normal;
 }
 .header {
   height: 2em;
@@ -142,6 +148,12 @@ h3 span {
   border: 1px solid #d9d9d9;
   padding: 5px;
   width: 3.3em;
+}
+.media-query-input {
+  width:3em;
+  text-align:center;
+  border:1px solid #ddd;
+  padding: 3px 2px;
 }
 @media (max-width: 767px) {
   #controlPanel .yui3-u-1-6 {

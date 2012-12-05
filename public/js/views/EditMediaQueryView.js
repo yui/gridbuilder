@@ -25,14 +25,14 @@ YUI.add('editMediaQueryView', function(Y, name) {
                     {
                         name  : 'Delete',
                         label : 'Delete',
-                        classNames: 'minibutton delete',
+                        classNames: 'minibutton delete yui3-u',
                         action: 'deleteMediaQuery'
                     },
 
                     {
                         name     : 'Ok',
                         label    : 'OK',
-                        classNames: 'minibutton',
+                        classNames: 'minibutton yui3-u',
                         action: function(e) {
                           panel.hide();
                         }

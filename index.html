@@ -127,11 +127,12 @@
     <script id="default-media-query-view" type='text/x-template'>
         <div class="yui3-widget-bd yui3-u-1">
 
-            <h2>What media queries would you like to edit?</h2>
+            <h2>Edit Media Queries</h2>
+            <h3>Change the width values at which media queries are activated, or remove media queries that you do not need.</h3>
             <div class="yui3-g">
                 <div class="yui3-u-1-2">
                     <div class="cell">
-                        <h3>Smartphones <br/><span>480px and below</span></h3>
+                        <h3>Smartphones <br/><span><input id="phone-query" class="media-query-input" value="480">px and below</span></h3>
                         <ul>
                             <li>Collapses responsive elements to 100% width </li>
                             <li>Includes helper classes to show/hide elements on smartphones</li>
@@ -141,7 +142,7 @@
                 </div>
                 <div class="yui3-u-1-2">
                     <div class="cell">
-                        <h3>Smartphones to Tablets <br/><span>767px and below</span></h3>
+                        <h3>Smartphones to Tablets <br/><span><input id="phone-tablet-query" class="media-query-input" value="767">px and below</span></h3>
                         <ul>
                             <li>Collapses responsive elements to 100% width</li>
                             <li>Includes helper classes to show/hide elements on smaller tablets</li>
@@ -151,7 +152,7 @@
                 </div>
                 <div class="yui3-u-1-2">
                     <div class="cell">
-                        <h3>Tablets <br/><span>768px to 980px</span></h3>
+                        <h3>Tablets <br/><span><input class="media-query-input" id="tablet-min-query" value="768">px to <input id="tablet-max-query" class="media-query-input" value="979">px</span></h3>
                         <ul>
                             <li>Includes helper classes to show/hide elements on regular tablets such as iPads</li>
                         </ul>
@@ -160,7 +161,7 @@
                 </div>
                 <div class="yui3-u-1-2">
                     <div class="cell">
-                        <h3>Default <br/><span>980px and above</span></h3>
+                        <h3>Default <br/><span><input class="media-query-input" id="default-query" value="980">px and above</span></h3>
                         <ul>
                             <li>Includes helper classes to show/hide elements on standard monitors/laptops screens</li>
                         </ul>

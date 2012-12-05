@@ -140,10 +140,23 @@ YUI.add('gridModel', function(Y, name) {
 
         useDefaultMediaQueries: {
             value: {
-                phone: true,
-                phoneTablet: true,
-                tablet: true,
-                default: true
+                phone: {
+                    max: 480,
+                    active: true
+                },
+                phoneTablet: {
+                    max: 767,
+                    active: true
+                },
+                tablet: {
+                    min: 768,
+                    max: 979,
+                    active: true
+                },
+                default: {
+                    min: 980,
+                    active: true
+                }
             }
         },
 
