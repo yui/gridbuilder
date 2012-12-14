@@ -105,7 +105,7 @@ YUI.add('gridModel', function(Y, name) {
         },
 
         classPrefix: {
-          value: 'y-'
+          value: 'yui3-'
         },
 
         unitClassName: {

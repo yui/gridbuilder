@@ -14,7 +14,10 @@ YUI.add('controlView', function(Y, name) {
         '#grid-layout-fluid': {click: 'layoutChanged'},
         '#grid-responsive-yes': {click: 'responsiveChanged'},
         '#grid-responsive-no': {click: 'responsiveChanged'},
-        '#default-media-queries': {click: 'defaultMediaQueriesClicked'}
+        '#default-media-queries': {click: 'defaultMediaQueriesClicked'},
+        "#grid-prefix": {keyup: "prefixChanged"},
+        "#grid-classname": {keyup: "classNameChanged"},
+        "#grid-unitClassName": {keyup: "unitClassNameChanged"}
         //'#add-media-queries': {click: 'addMediaQueryClicked'}
       },
 
@@ -82,6 +85,19 @@ YUI.add('controlView', function(Y, name) {
               //Disable Media Queries Buttons
               Y.all("#media-queries input[type='button']").set("disabled", true);
           }
+      },
+
+      prefixChanged: function(e) {
+        var prefix = e.currentTarget._node.value;
+        this.get("model").set('classPrefix', prefix);
+      },
+      classNameChanged: function(e) {
+        var c = e.currentTarget._node.value;
+        this.get("model").set('className', c);
+      },
+      unitClassNameChanged: function(e) {
+        var u = e.currentTarget._node.value;
+        this.get("model").set('unitClassName', u);
       },
 
       defaultMediaQueriesClicked: function(e) {

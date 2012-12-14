@@ -71,7 +71,18 @@
                         <input type="radio" name="grid-responsive" id="grid-responsive-no" /> <small>No</small>
                     </div>
                 </div>
-                <div class="yui3-u-1-3">
+                <div class="yui3-u-1-6">
+                    <div class="cell" id="prefix">
+                        <label for="grid-prefix">Prefix</label>
+                        <label for="grid-prefix">Row</label>
+                        <label for="grid-prefix">Column</label>
+                        <br/>
+                        <input type="text" id="grid-prefix" value="yui3-" placeholder='yui3-'/>
+                        <input type="text" id="grid-classname" value="g" placeholder="row" />
+                        <input type="text" id="grid-unitClassName" value="u" placeholder="col"/>
+                    </div>
+                </div>
+                <div class="yui3-u-1-6">
                     <div class="cell" id="media-queries">
                         <label>Media Queries</label><br/>
                         <span id="current-media-queries"></span>
