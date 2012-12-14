@@ -1,3 +1,8 @@
+/*
+Copyright (c) 2012, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://yuilibrary.com/license/
+*/
 YUI.add('gridModel', function(Y, name) {
     var GridModel = Y.Base.create('gridModel', Y.Model, [], {
 
@@ -100,7 +105,7 @@ YUI.add('gridModel', function(Y, name) {
         },
 
         classPrefix: {
-          value: 'y-'
+          value: 'yui3-'
         },
 
         unitClassName: {

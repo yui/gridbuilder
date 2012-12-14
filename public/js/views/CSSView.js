@@ -1,3 +1,8 @@
+/*
+Copyright (c) 2012, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://yuilibrary.com/license/
+*/
 YUI.add('cssView', function(Y, name) {
   var CSSView = Y.Base.create('cssView', Y.View, [], {
       initializer: function () {
@@ -8,6 +13,9 @@ YUI.add('cssView', function(Y, name) {
           model.after('usePixelsChange', this.update, this);
           model.after('isResponsiveChange', this.update, this);
           model.after('useDefaultMediaQueriesChange', this.update, this);
+          model.after('classPrefixChange', this.update, this);
+          model.after('classNameChange', this.update, this);
+          model.after('unitClassNameChange', this.update, this);
           model.after('cssChange', this.render, this);
       },
 
