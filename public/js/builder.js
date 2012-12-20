@@ -6,14 +6,14 @@ http://yuilibrary.com/license/
         YUI({
             modules: {
                 cssView: {
-                    fullpath: 'https://raw.github.com/yui/gridbuilder/gh-pages/public/js/views/CSSView.js?login=tilomitra&token=f445a2b8a1653eaddf16e8d5507513ab'
+                    fullpath: 'http://yui.github.com/gridbuilder/public/js/views/CSSView.js'
                 },
                 htmlView: {
-                    fullpath: 'https://raw.github.com/yui/gridbuilder/master/public/js/views/HTMLView.js'
+                    fullpath: 'http://yui.github.com/gridbuilder/public/js/views/HTMLView.js'
                 },
                 
                 controlView: {
-                    fullpath: 'https://raw.github.com/yui/gridbuilder/master/public/js/views/ControlView.js',
+                    fullpath: 'http://yui.github.com/gridbuilder/public/js/views/ControlView.js',
                     requires: ['addMediaQueryView', 'editMediaQueryView', 'defaultMediaQueryView']
                 },
                 
@@ -23,15 +23,15 @@ http://yuilibrary.com/license/
                 // },
 
                 editMediaQueryView: {
-                    fullpath: 'https://raw.github.com/yui/gridbuilder/master/public/js/views/EditMediaQueryView.js'
+                    fullpath: 'http://yui.github.com/gridbuilder/public/js/views/EditMediaQueryView.js'
                 },
 
                 defaultMediaQueryView: {
-                    fullpath: 'https://raw.github.com/yui/gridbuilder/master/public/js/views/DefaultMediaQueryView.js'
+                    fullpath: 'http://yui.github.com/gridbuilder/public/js/views/DefaultMediaQueryView.js'
                 },
                 
                 gridModel: {
-                    fullpath: 'https://raw.github.com/yui/gridbuilder/master/public/js/models/GridModel.js'
+                    fullpath: 'http://yui.github.com/gridbuilder/public/js/models/GridModel.js'
                 },
                 
             }
