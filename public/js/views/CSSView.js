@@ -18,9 +18,22 @@ YUI.add('cssView', function(Y, name) {
           model.after('unitClassNameChange', this.update, this);
           model.after('cssChange', this.render, this);
 
+          Y.one("#css-toggle-chkbox").after("click", this.toggleCSSView, this);
+
           window.URL = window.webkitURL || window.URL;
           window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder ||
                        window.MozBlobBuilder;
+      },
+
+      toggleCSSView: function (e) {
+          var checked = e.target.get('checked'),
+              cssContainer = Y.one("#demo-css");
+          if (checked) {
+            cssContainer.addClass("un-minified-css-view");
+
+          } else {
+            cssContainer.removeClass("un-minified-css-view");
+          }
       },
 
       render: function () {
