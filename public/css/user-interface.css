@@ -252,21 +252,6 @@ h3 span {
   overflow-y: scroll;
   margin-bottom: 20px;
 }
-div#css-toggle {
-  text-transform: none;
-  font-size: 14px;
-  color: black;
-  padding: 0 15px 0 0;
-  margin-bottom: 5px;
-  text-align: right;
-}
-input[type="checkbox"] {
-  vertical-align: bottom;
-}
-#demo-css.un-minified-css-view {
-  white-space: pre;
-  text-align: left;
-}
 p.desc {
   font-size: 80%;
   color: #666666;
