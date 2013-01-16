@@ -17,6 +17,13 @@ YUI.add('cssView', function(Y, name) {
           model.after('classNameChange', this.update, this);
           model.after('unitClassNameChange', this.update, this);
           model.after('cssChange', this.render, this);
+
+          Y.one("#css-toggle-chkbox").after("click", this.toggleCSSView, this);
+      },
+
+      toggleCSSView: function (e) {
+          var checked = e.target.get('checked');
+          Y.one("#demo-css")[checked ? "addClass" : "removeClass"]("un-minified-css-view");       
       },
 
       render: function () {
