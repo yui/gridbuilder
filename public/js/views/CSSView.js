@@ -17,11 +17,25 @@ YUI.add('cssView', function(Y, name) {
           model.after('classNameChange', this.update, this);
           model.after('unitClassNameChange', this.update, this);
           model.after('cssChange', this.render, this);
+
+          window.URL = window.webkitURL || window.URL;
+          window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder ||
+                       window.MozBlobBuilder;
       },
 
       render: function () {
           Y.log("Render CSS View");
           this.get("container").empty().set('text', this.get("model").get('css'));
+
+          var downloadCSS = Y.one("#download-responsive-css"), bblob;
+
+          bblob = new BlobBuilder();
+          bblob.append(this.get("container").get("text"));
+
+          window.URL.revokeObjectURL(downloadCSS.get('href'));          
+          downloadCSS.set('download',"gridbuilder-response-css.css");
+          downloadCSS.set('href', window.URL.createObjectURL(bblob.getBlob('text/css')));
+
           return this;
       },
 
