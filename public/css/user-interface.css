@@ -266,6 +266,11 @@ input[type="checkbox"] {
 #demo-css.un-minified-css-view {
   white-space: pre;
   text-align: left;
+  width:100%;
+  word-wrap: break-word;
+  font-family:'courier new', monospace;
+  font-weight:bold;
+  font-size:80%;
 }
 p.desc {
   font-size: 80%;
