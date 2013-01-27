@@ -13,7 +13,6 @@
     vertical-align: top;
 }
 
-
 {{! Generate Grouped Styles for all units}}
 {{{groupUnits classPrefix unitClassName units}}} {
     display: inline-block;
@@ -28,7 +27,6 @@
 .{{classPrefix}}{{unitClassName}}-1 {
     display:block;
 }
-
 
 {{! Generate pixel based or percent based grid and offsets }}
 
@@ -49,7 +47,6 @@
 {{else}}
     
     {{#each units}}
-
         .{{../classPrefix}}{{../unitClassName}}-{{this.span}}-{{this.total}} {
             width: {{{computePercent this.span this.total}}};
         }
@@ -57,14 +54,8 @@
         .{{../classPrefix}}{{../offsetClassName}}-{{this.span}}-{{this.total}} {
             margin-left: {{{computePercent this.span this.total ../width}}};
         }
-
     {{/each}}
-
-
 {{/if}}
-
-
-
 
 {{! RESPONSIVE BEHAVIOR}}
 
@@ -81,12 +72,7 @@
     }
 
     {{! DEFAULT MEDIA QUERIES }}
-
-    {{! visible-* / hidden-* classes from Twitter Bootstrap with modifications to remove inherits and importants}}
-    {{! https://github.com/twitter/bootstrap/blob/master/less/responsive-utilities.less }}
-
     {{#if ../useDefaultMediaQueries.default.active}}
-
         @media (min-width:{{../useDefaultMediaQueries.default.min}}px) {
             .{{../../classPrefix}}visible-phone     { display: none; }
             .{{../../classPrefix}}visible-tablet    { display: none; }
@@ -96,59 +82,40 @@
             .{{../../classPrefix}}hidden-desktop    { display: none; }
         }
 
-
-
     {{/if}}
 
-
     {{#if ../useDefaultMediaQueries.phone.active}}
-
         @media (max-width:{{../useDefaultMediaQueries.phone.max}}px) {
             .{{../../classPrefix}}{{../../className}}-{{../../responsiveClassName}} > [class ^= "{{../../classPrefix}}{{../../unitClassName}}"] {
                 width:100%;
             }
         }
-
     {{/if}}
 
     {{#if ../useDefaultMediaQueries.phoneTablet.active}}
-
         @media (max-width:{{../useDefaultMediaQueries.phoneTablet.max}}px) {
 
             .{{../../classPrefix}}{{../../className}}-{{../../responsiveClassName}} > [class ^= "{{../../classPrefix}}{{../../unitClassName}}"] {
                 width:100%;
-            }
-
-            
+            }            
             .{{../../classPrefix}}visible-phone     { } 
             .{{../../classPrefix}}hidden-phone      { display: none; }
             .{{../../classPrefix}}hidden-desktop    { }
             .{{../../classPrefix}}visible-desktop   { display: none; }
-
         }
-
     {{/if}}
 
     {{#if ../useDefaultMediaQueries.tablet.active}}
-
         @media (min-width:{{../useDefaultMediaQueries.tablet.min}}px) and (max-width:{{../useDefaultMediaQueries.tablet.max}}px) {
-
-            
             .{{../../classPrefix}}visible-tablet    {}
             .{{../../classPrefix}}hidden-tablet     { display: none; }
             .{{../../classPrefix}}hidden-desktop    {}
             .{{../../classPrefix}}visible-desktop   { display: none; }
-
         }
-
     {{/if}}
-
-
-
     {{! CUSTOM MEDIA QUERIES }}
 
     {{#each mediaQueries}}
-
         {{! Generate the @Media query using the min and max values provided}}
         {{{generateMediaQuery this.min this.max}}} {
 
@@ -156,13 +123,6 @@
             .{{../../classPrefix}}{{../../className}}-{{../../responsiveClassName}} > [class ^= "{{../../classPrefix}}{{../../unitClassName}}"] {
                 width:100%
             }
-
         }
-
     {{/each}}
-
 {{/if}}
-
-
-
-
