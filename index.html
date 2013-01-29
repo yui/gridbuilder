@@ -27,8 +27,8 @@
 
                 <div class="menu yui3-u-2-3">
                     <ul class='yui3-u-1'>
-                        <li class='yui3-u'><a href="docs.html" alt="Documentation">Documentation</li>
-                        <li class='yui3-u'><a href="examples/magazine/" alt="Example">Example</li>
+                        <li class='yui3-u'><a href="docs.html" alt="Documentation">Documentation</a></li>
+                        <li class='yui3-u'><a href="examples/magazine/" alt="Example">Example</a></li>
                         <li class='yui3-u'><a href="https://github.com/yui/gridbuilder/issues" alt="File an issue">File an issue</a></li>
                     </ul>
                 </div>
@@ -114,7 +114,10 @@
             </div>
 
             <h3>Grid CSS</h3>
-            <div id="css-toggle"><input id="css-toggle-chkbox" type="checkbox">&nbsp; View Un-minified CSS</div>
+            <div id="css-toggle">
+                <input id="offset-toggle-chkbox" type="checkbox"/>&nbsp;<label for="offset-toggle-chkbox">Hide Offset CSS</label>&nbsp;&nbsp;&nbsp;
+                <input id="css-toggle-chkbox" type="checkbox"/>&nbsp;<label for="css-toggle-chkbox">View Un-minified CSS</label>
+            </div>
 <!--             <div class="centered">
                 <input class='yui3-button notice' id="show-css-button" value="Show CSS"/>
             </div> -->
@@ -122,7 +125,7 @@
             </div>
         </div>
 
-        <div class="footer" class="yui3-u-1">
+        <div class="footer yui3-u-1">
             <small class="yui3-u-1 centered">
                 Check out the <a href="layout.html" alt="Responsive Grids Tutorial">tutorial and example</a>. Send issues to <a href="http://twitter.com/tilomitra" alt='Tilo on Twitter'>@tilomitra</a>
             </small>

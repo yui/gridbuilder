@@ -38,9 +38,11 @@
             width: {{{computePixel this.span this.total ../width}}};
         }
 
-        .{{../classPrefix}}{{../offsetClassName}}-{{this.span}}-{{this.total}} {
-            margin-left: {{{computePixel this.span this.total ../width}}};
-        }
+        {{#if ../viewOffsets}}
+            .{{../../classPrefix}}{{../../offsetClassName}}-{{this.span}}-{{this.total}} {
+                margin-left: {{{computePixel this.span this.total ../../width}}};
+            }
+        {{/if}}
 
     {{/each}}
 
@@ -51,9 +53,12 @@
             width: {{{computePercent this.span this.total}}};
         }
 
-        .{{../classPrefix}}{{../offsetClassName}}-{{this.span}}-{{this.total}} {
-            margin-left: {{{computePercent this.span this.total ../width}}};
-        }
+        {{#if ../viewOffsets}}
+            .{{../../classPrefix}}{{../../offsetClassName}}-{{this.span}}-{{this.total}} {
+                margin-left: {{{computePixel this.span this.total ../../width}}};
+            }
+        {{/if}}
+        
     {{/each}}
 {{/if}}
 

@@ -11,6 +11,7 @@ YUI.add('cssView', function(Y, name) {
           model.after('columnsChange', this.update, this);
           model.after('widthChange', this.update, this);
           model.after('usePixelsChange', this.update, this);
+          model.after('viewOffsetsChange', this.update, this);
           model.after('isResponsiveChange', this.update, this);
           model.after('useDefaultMediaQueriesChange', this.update, this);
           model.after('classPrefixChange', this.update, this);
@@ -57,6 +58,7 @@ YUI.add('cssView', function(Y, name) {
               width: model.get('width'),
               numColumns: model.get('columns'),
               usePixels: model.get("usePixels"),
+              viewOffsets: model.get("viewOffsets"),
               classPrefix: model.get("classPrefix"),
               unitClassName: model.get("unitClassName"),
               className: model.get("className"),

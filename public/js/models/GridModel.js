@@ -120,7 +120,12 @@ YUI.add('gridModel', function(Y, name) {
           value: false,
           validator: Y.Lang.isBoolean
         },
-
+          
+        viewOffsets: {
+          value: true,
+          validator: Y.Lang.isBoolean
+        },
+          
         units: {
           value: [],
           validator: Y.Lang.isArray
