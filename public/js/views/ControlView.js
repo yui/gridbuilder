@@ -18,11 +18,13 @@ YUI.add('controlView', function(Y, name) {
         "#grid-prefix": {keyup: "prefixChanged"},
         "#grid-classname": {keyup: "classNameChanged"},
         "#grid-unitClassName": {keyup: "unitClassNameChanged"}
+                  
         //'#add-media-queries': {click: 'addMediaQueryClicked'}
       },
 
       initializer: function (config) {
           var model = this.get("model");
+          Y.one("#offset-toggle-chkbox").after("click", this.viewOffsetsChanged, this);
           //model.after("useDefaultMediaQueriesChange", this.updateMediaQueries, this);
       },
 
@@ -98,6 +100,10 @@ YUI.add('controlView', function(Y, name) {
       unitClassNameChanged: function(e) {
         var u = e.currentTarget._node.value;
         this.get("model").set('unitClassName', u);
+      },
+      viewOffsetsChanged: function (e) {
+        var u = e.currentTarget.get('checked');
+        this.get("model").set('viewOffsets', !u);     
       },
 
       defaultMediaQueriesClicked: function(e) {
