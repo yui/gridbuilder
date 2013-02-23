@@ -45,9 +45,9 @@ h3 {
   font-weight:normal;
 }
 .header {
-  height: 2em;
-  padding: 10px 20px 12px;
-  border: 1px solid #d9d9d9;
+  color: #333;
+  background: #fff;
+
 }
 .header h1 {
   margin: 5px 0 5px 10px;
@@ -106,27 +106,14 @@ h3 span {
 }
 #wrapper {
   width: 100%;
-  -webkit-box-shadow: 0 0 2px #cccccc;
-  -moz-box-shadow: 0 0 2px #cccccc;
-  box-shadow: 0 0 2px #cccccc;
   margin: 0 auto;
   background: #ffffff;
   border: 1px solid #a6a6a6;
 }
 #controlPanel {
-  margin: 20px;
-  height: 100%;
-  border: 1px solid darken(#666666, 30%);
-  -webkit-box-shadow: 0 0 3px #666666;
-  -moz-box-shadow: 0 0 3px #666666;
-  box-shadow: 0 0 3px #666666;
+  margin: 0 0 20px;
+  border-bottom: 1px solid #eee;
   background: #fafafa;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eaeaea), color-stop(1, #fafafa));
-  background: -ms-linear-gradient(bottom, #eaeaea, #fafafa);
-  background: -moz-linear-gradient(center bottom, #eaeaea 0%, #fafafa 100%);
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
@@ -134,9 +121,6 @@ h3 span {
   color: #666666;
 }
 .cell {
-  -webkit-box-shadow: 0 0 2px #d9d9d9;
-  -moz-box-shadow: 0 0 2px #d9d9d9;
-  box-shadow: 0 0 2px #d9d9d9;
   padding: 10px;
   min-height: 4.2em;
   text-transform: uppercase;
@@ -211,11 +195,20 @@ h3 span {
   text-align: center;
 }
 .demo-unit {
-  height: 150px;
   background: #fff4a5;
-  border: 2px dashed #d8be00;
+  border: 2px solid #d8be00;
   border-left: none;
+  margin:5px;
+  color: #d8be00;
+  padding:2em 0;
+  font-size:80%;
+
 }
+
+#demo .demo-unit:first-child {
+  border-left:2px solid #d8be00;
+}
+
 .y-hidden-phone {
   background: white;
 }
@@ -235,11 +228,7 @@ h3 span {
   padding: 20px 10px;
   margin: 10px;
 }
-@media (max-width: 767px) {
-  .demo-unit {
-    height: 75px;
-  }
-}
+
 #demo-css {
   -webkit-box-shadow: inset 0 0 5px #666666;
   -moz-box-shadow: inset 0 0 5px #666666;
@@ -252,6 +241,8 @@ h3 span {
   overflow-y: scroll;
   margin-bottom: 20px;
 }
+
+
 div#css-toggle {
   text-transform: none;
   font-size: 14px;
