@@ -1,9 +1,17 @@
+{{! Templatized Handlebars file as of YUI 3.9.0 (build 5827) Copyright 2013 Yahoo! Inc. http://yuilibrary.com/license/ }}
 
 .{{classPrefix}}{{className}} {
     letter-spacing: -0.31em;
     *letter-spacing: normal;
-    word-spacing: -0.43em; 
+    *word-spacing: -0.43em;
+    text-rendering: optimizespeed;
 }
+
+.opera-only :-o-prefocus,
+.{{classPrefix}}{{className}} {
+    word-spacing: -0.43em;
+}
+
 
 .{{classPrefix}}{{unitClassName}} {
     display: inline-block;
@@ -11,6 +19,7 @@
     letter-spacing: normal;
     word-spacing: normal;
     vertical-align: top;
+    text-rendering: auto;
 }
 
 {{! Generate Grouped Styles for all units}}
@@ -20,6 +29,7 @@
     letter-spacing: normal;
     word-spacing: normal;
     vertical-align: top;
+    text-rendering: auto;
 }
 
 {{! Generate Singular Styles Per Unit }}
@@ -67,8 +77,15 @@
         word-spacing: -0.43em; 
     }
 
+
+    .opera-only :-o-prefocus,
+    .{{classPrefix}}{{className}}-{{responsiveClassName}} {
+        word-spacing: -0.43em;
+    }
+
+
     .{{classPrefix}}{{className}}-{{responsiveClassName}} img {
-        max-width:100%;
+        max-width: 100%;
     }
 
     {{! DEFAULT MEDIA QUERIES }}
@@ -121,7 +138,7 @@
 
             {{! Collapse all elements that are direct descendents of .yui3-g-responsive > "yui3-u" (default) }}
             .{{../../classPrefix}}{{../../className}}-{{../../responsiveClassName}} > [class ^= "{{../../classPrefix}}{{../../unitClassName}}"] {
-                width:100%
+                width: 100%;
             }
         }
     {{/each}}
