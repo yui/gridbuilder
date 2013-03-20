@@ -6,14 +6,14 @@ http://yuilibrary.com/license/
         YUI({
             modules: {
                 cssView: {
-                    fullpath: 'http://yui.github.com/gridbuilder/public/js/views/CSSView.js'
+                    fullpath: './public/js/views/CSSView.js'
                 },
                 htmlView: {
-                    fullpath: 'http://yui.github.com/gridbuilder/public/js/views/HTMLView.js'
+                    fullpath: './public/js/views/HTMLView.js'
                 },
                 
                 controlView: {
-                    fullpath: 'http://yui.github.com/gridbuilder/public/js/views/ControlView.js',
+                    fullpath: './public/js/views/ControlView.js',
                     requires: ['addMediaQueryView', 'editMediaQueryView', 'defaultMediaQueryView']
                 },
                 
@@ -23,15 +23,15 @@ http://yuilibrary.com/license/
                 // },
 
                 editMediaQueryView: {
-                    fullpath: 'http://yui.github.com/gridbuilder/public/js/views/EditMediaQueryView.js'
+                    fullpath: './public/js/views/EditMediaQueryView.js'
                 },
 
                 defaultMediaQueryView: {
-                    fullpath: 'http://yui.github.com/gridbuilder/public/js/views/DefaultMediaQueryView.js'
+                    fullpath: './public/js/views/DefaultMediaQueryView.js'
                 },
                 
                 gridModel: {
-                    fullpath: 'http://yui.github.com/gridbuilder/public/js/models/GridModel.js'
+                    fullpath: './public/js/models/GridModel.js'
                 },
                 
             }
