@@ -3,39 +3,41 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.9.0/build/cssreset/cssreset-min.css">
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.9.0/build/cssbase/cssbase-min.css">
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.9.0/build/cssgrids/grids-min.css">
-    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.0/build/cssbutton/cssbutton.css">
-    <link rel="stylesheet" type="text/css" href="https://rawgithub.com/yui/gridbuilder/master/public/css/user-interface.css">
+    <link rel="stylesheet" type="text/css" href="http://necolas.github.com/normalize.css/1.0.2/normalize.css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.9.0pr1/build/cssgrids-responsive/cssgrids-responsive-min.css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.8.0/build/cssbutton/cssbutton-min.css">
     <link rel="stylesheet" type="text/css" href="https://rawgithub.com/tilomitra/csslist/master/css/list-core.css">
     <link rel="stylesheet" type="text/css" href="https://rawgithub.com/tilomitra/csslist/master/css/list.css">
     <link rel="stylesheet" type="text/css" href="https://rawgithub.com/tilomitra/csslist/master/css/list-responsive.css">
+    <link rel="stylesheet" type="text/css" href="https://rawgithub.com/tilomitra/yuicss-common/master/ui.css">
+    <link rel="stylesheet" type="text/css" href="public/css/user-interface.css">
+
+
+    <!-- TYPEKIT -->
+    <script type="text/javascript" src="//use.typekit.net/ajf8ggy.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+
     <style id="demo-grid-styles" type="text/css">
 
     </style>
 
 </head>
 <body class="yui3-g yui3-skin-sam">
-    <a href="https://github.com/yui/gridbuilder"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
     <div id="wrapper" class="yui3-g">
+        <div id="headerMenu" class="yui3-menu yui3-menu-open yui3-menu-horizontal yui3-menu-fixed">
+            <a href="/" class="yui3-u yui3-menu-heading">YUI GridBuilder</a>
+            <ul>
+                <li class='yui3-u'><a href="http://yui.github.com/gridbuilder/docs.html" alt="Documentation">Documentation</a></li>
+                <li class='yui3-u'><a href="http://yui.github.com/gridbuilder/examples/magazine/" alt="Example">Example</a></li>
+                <li class='yui3-u'><a href="https://github.com/yui/gridbuilder/issues" alt="File an issue">File an issue</a></li>
+            </ul>
+        </div>
+        <div class="header yui3-u-1">
 
-        <div class="yui3-u-1">
-            <div class="header yui3-g">
+            <h1 class="yui3-u-1">YUI GridBuilder</h1>
+            <h2 class="yui3-u">Build a custom grid for your project</h2>
 
-                <div class='yui3-u-1-3'>
-                    <div class="sprite yui3-u"></div>
-                    <h1 class="yui3-u">Grid Builder</h1>
-                </div>
-
-                <div class="menu yui3-u-2-3">
-                    <ul class='yui3-u-1'>
-                        <li class='yui3-u'><a href="docs.html" alt="Documentation">Documentation</li>
-                        <li class='yui3-u'><a href="examples/magazine/" alt="Example">Example</li>
-                        <li class='yui3-u'><a href="https://github.com/yui/gridbuilder/issues" alt="File an issue">File an issue</a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
 
         <div class="yui3-u-1">
@@ -102,21 +104,8 @@
 
             </div>
 
-<!--             <div id="d-responsive" class="yui3-g">
-                <h3 class="yui3-u-1">Responsive Helper Classes</h3>
-                <p class='yui3-u-1'>If you've chosen a responsive grid, helper classes will be generated to control the showing and hiding of elements at specific screen widths.</p>
-                <div class="y-hidden-phone yui3-u-1-3">
-                    <div class="utility-unit green-unit">This container will be hidden on phones</div>
-                </div>
-                <div class="y-hidden-tablet yui3-u-1-3">
-                     <div class="utility-unit blue-unit">This container will be hidden on tablets</div>
-                </div>
-                <div class="y-hidden-desktop yui3-u-1-3">
-                     <div class="utility-unit red-unit">This container will be showed on tablets</div>
-                </div>
-            </div> -->
-
             <h3>Grid CSS</h3>
+            <div id="css-toggle"><input id="css-toggle-chkbox" type="checkbox">&nbsp; View Un-minified CSS</div>
 <!--             <div class="centered">
                 <input class='yui3-button notice' id="show-css-button" value="Show CSS"/>
             </div> -->
@@ -126,7 +115,7 @@
 
         <div class="footer" class="yui3-u-1">
             <small class="yui3-u-1 centered">
-                Check out the <a href="layout.html" alt="Responsive Grids Tutorial">tutorial and example</a>. Send issues to <a href="http://twitter.com/tilomitra" alt='Tilo on Twitter'>@tilomitra</a>
+                Built with love by the YUI Team. File issues and send pull requests on <a href="http://github.com/yui/gridbuilder">Github</a>.
             </small>
         </div>
     </div>
@@ -198,7 +187,7 @@
         </div>
     </script>
 
-    <script src="http://yui.yahooapis.com/3.9.0/build/yui/yui-debug.js"></script>
+    <script src="http://yui.yahooapis.com/3.5.1/build/yui/yui-debug.js"></script>
     <script src="public/js/builder.js"></script>
 
 </body>

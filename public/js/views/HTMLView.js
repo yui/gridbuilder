@@ -13,7 +13,6 @@ YUI.add('htmlView', function(Y, name) {
       render: function () {
           Y.log("Render HTML View");
           this.renderCols();
-          this.renderResponsive();
           return this;
       },
 
@@ -24,9 +23,6 @@ YUI.add('htmlView', function(Y, name) {
         return this;
       },
 
-      renderResponsive: function () {
-
-      },
 
       toColumnsHTML: function () {
         var model = this.get("model"),
@@ -36,16 +32,18 @@ YUI.add('htmlView', function(Y, name) {
         className = model.get("className"),
         responsiveClassName = model.get("responsiveClassName"),
         columns = model.get("columns"),
-        html = '<' + tagName + ' class="' +  classPrefix +
-                   className + '-' + responsiveClassName + '">',
-        i;
+        html = '<' + tagName + ' class="' +  classPrefix + className + '-' + responsiveClassName + '">',
+        i,
+        j,
+        remCol,
+        prefix  = classPrefix + unitClassName + '-' + '1' + '-' + columns;
 
+        //loop through and create individual one
         for (i = 0; i < columns; i++) {
-            html += '<div class="' + classPrefix + unitClassName +
-                    '-' + '1' + '-' + columns + '"><div class="demo-unit"></div></div>';
+          html += '<div class="' + classPrefix + unitClassName + '-' + '1' + '-' + columns + '"><div class="demo-unit">.'+prefix+'</div></div>';
         }
 
-        html += '</div>';
+        html += '</' + tagName + '>';
         return html;
       },
 
