@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="https://rawgithub.com/tilomitra/csslist/master/css/list-responsive.css">
     <link rel="stylesheet" type="text/css" href="https://rawgithub.com/tilomitra/yuicss-common/master/ui.css">
     <link rel="stylesheet" type="text/css" href="public/css/user-interface.css">
+    <link rel="stylesheet" type="text/css" href="https://rawgithub.com/ccampbell/rainbow/master/themes/github.css">
 
 
     <!-- TYPEKIT -->
@@ -100,17 +101,20 @@
 
         <div id="demo" class="yui3-u-1">
             <h3>Demo</h3>
-            <div id="d">
+            <div id="d"></div>
 
+        
+            <div id="css-toggle" class="yui3-u-1">
+                <h3>Grid CSS</h3>
+                <p>
+                    Using <a href="http://yuilibrary.com/yui/docs/cssgrids/">YUI Grids</a> from <span>YUI 3.9.0</span><br/>
+                    <input id="css-toggle-chkbox" type="checkbox"> View Un-minified CSS
+                </p>
             </div>
-
-            <h3>Grid CSS</h3>
-            <div id="css-toggle"><input id="css-toggle-chkbox" type="checkbox">&nbsp; View Un-minified CSS</div>
 <!--             <div class="centered">
                 <input class='yui3-button notice' id="show-css-button" value="Show CSS"/>
             </div> -->
-            <div id="demo-css" class="prettyprint">
-            </div>
+            <div id="demo-css"></div>
         </div>
 
         <div class="footer" class="yui3-u-1">
@@ -189,6 +193,8 @@
 
     <script src="http://yui.yahooapis.com/3.9.0/build/yui/yui-debug.js"></script>
     <script src="public/js/builder.js"></script>
+    <script src="https://rawgithub.com/ccampbell/rainbow/master/js/rainbow.min.js"></script>
+    <script src="https://rawgithub.com/ccampbell/rainbow/master/js/language/css.js"></script>
 
 </body>
 </html>

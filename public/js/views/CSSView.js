@@ -17,6 +17,9 @@ YUI.add('cssView', function(Y, name) {
           model.after('classNameChange', this.update, this);
           model.after('unitClassNameChange', this.update, this);
           model.after('cssChange', this.render, this);
+
+          Y.one("#css-toggle-chkbox").after("click", this.toggleCSSView, this);
+
       },
 
       render: function () {
@@ -41,6 +44,25 @@ YUI.add('cssView', function(Y, name) {
 
               }
           });
+      },
+
+      toggleCSSView: function (e) {
+          var checked = e.target.get('checked'),
+              demoCSS = Y.one('#demo-css'),
+              noMinify = "un-minified-css-view",
+              content = demoCSS.get('text');
+              code = Y.Node.create('<pre><code id="rainbow" data-language="css"></code></pre>');
+
+          demoCSS.empty();
+
+          if (checked) {
+            demoCSS.appendChild(code);
+            Y.one('#rainbow').set('text', content);
+            Rainbow.color();
+          }
+          else {
+            demoCSS.set('text', content);
+          }
       },
 
       toCSS: function(source) {
