@@ -18,15 +18,15 @@ YUI.add('cssView', function(Y, name) {
           model.after('unitClassNameChange', this.update, this);
           model.after('cssChange', this.render, this);
 
-          Y.one("#css-toggle-chkbox").after("click", this.toggleCSSView, this);
+          Y.one("#css-toggle-chkbox").after("click", this.render, this);
 
       },
 
-      render: function () {
-          Y.log("Render CSS View");
-          this.get("container").empty().set('text', this.get("model").get('css'));
-          return this;
-      },
+      // render: function () {
+      //     Y.log("Render CSS View");
+      //     this.get("container").empty().set('text', this.get("model").get('css'));
+      //     return this;
+      // },
 
       update: function () {
           Y.log("Updating Grid CSS...");
@@ -46,23 +46,27 @@ YUI.add('cssView', function(Y, name) {
           });
       },
 
-      toggleCSSView: function (e) {
-          var checked = e.target.get('checked'),
-              demoCSS = Y.one('#demo-css'),
-              noMinify = "un-minified-css-view",
-              content = demoCSS.get('text');
+      render: function () {
+          var checked = this.get('toggleBox').get('checked'),
+              container = this.get('container'),
+              minify = "minify",
+              content = this.get('model').get('css');
               code = Y.Node.create('<pre><code id="rainbow" data-language="css"></code></pre>');
 
-          demoCSS.empty();
+          container.empty();
 
           if (checked) {
-            demoCSS.appendChild(code);
+            container.set('text', content);
+            container.addClass(minify);
+          }
+
+          else {
+            container.removeClass(minify).appendChild(code);
             Y.one('#rainbow').set('text', content);
             Rainbow.color();
           }
-          else {
-            demoCSS.set('text', content);
-          }
+
+          return this;
       },
 
       toCSS: function(source) {
@@ -92,15 +96,21 @@ YUI.add('cssView', function(Y, name) {
   }, {
       ATTRS: {
           container: {
-                  valueFn: function () {
-                  return Y.one('#demo-css');
+                valueFn: function () {
+                return Y.one('#demo-css');
               }
+          },
+
+          toggleBox: {
+            valueFn: function () {
+              return Y.one("#css-toggle-chkbox");
+            }
           }
       }
   });
 
   
-	Y.namespace("GB").CSSView = CSSView;
+  Y.namespace("GB").CSSView = CSSView;
 }, '0.0.1', {
-	requires: ['node', 'view']
+  requires: ['node', 'view']
 });

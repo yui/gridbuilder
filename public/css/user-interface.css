@@ -260,9 +260,11 @@ select {
   margin-bottom: 20px;
 }
 
-#demo-css pre {
+#demo-css pre, .minify {
   text-align: left;
+  padding: 2em;
 }
+
 
 #css-toggle {
   text-transform: none;
@@ -280,9 +282,6 @@ select {
   padding: 2px 5px;
 }
 
-#css-toggle input {
-  font-size: 150%;
-}
 p.desc {
   font-size: 80%;
   color: #666666;
