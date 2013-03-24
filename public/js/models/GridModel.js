@@ -93,7 +93,7 @@ YUI.add('gridModel', function(Y, name) {
         },
 
         responsiveClassName: {
-            value: 'responsive'
+            value: 'r'
         },
 
         tagName: {
