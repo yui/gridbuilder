@@ -2,7 +2,7 @@
 
 The YUI Responsive Grid Builder is a little web app that generates responsive CSS based on [YUI Grids](http://yuilibrary.com/yui/docs/cssgrids/). 
 
-![Screenshot](http://f.cl.ly/items/2B3F2G0B2j1w472j223y/Screen%20Shot%202013-03-24%20at%207.01.09%20PM.png)
+![Screenshot](http://f.cl.ly/items/1b262l0A1m1W310K3R2x/Screen%20Shot%202013-03-24%20at%207.05.23%20PM.png)
 
 ##[See it in action](http://yui.github.com/gridbuilder/)
 
