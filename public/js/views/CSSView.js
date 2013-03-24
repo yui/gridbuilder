@@ -63,7 +63,10 @@ YUI.add('cssView', function(Y, name) {
           else {
             container.removeClass(minify).appendChild(code);
             Y.one('#rainbow').set('text', content);
-            Rainbow.color();
+
+            if (!Y.Lang.isUndefined(window.Rainbow)) {
+                Rainbow.color();
+            }
           }
 
           return this;
@@ -112,5 +115,5 @@ YUI.add('cssView', function(Y, name) {
   
   Y.namespace("GB").CSSView = CSSView;
 }, '0.0.1', {
-  requires: ['node', 'view']
+  requires: ['node', 'view', 'io']
 });
