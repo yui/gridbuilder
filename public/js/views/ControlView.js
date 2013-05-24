@@ -28,7 +28,7 @@ YUI.add('controlView', function(Y, name) {
 
       render: function () {
           var container = this.get('container');
-          
+
            // Append the container element to the DOM if it's not on the page already.
           if (!container.inDoc()) {
               Y.one('body').append(container);
@@ -88,15 +88,15 @@ YUI.add('controlView', function(Y, name) {
       },
 
       prefixChanged: function(e) {
-        var prefix = e.currentTarget._node.value;
+        var prefix = Y.Escape.html(e.currentTarget._node.value);
         this.get("model").set('classPrefix', prefix);
       },
       classNameChanged: function(e) {
-        var c = e.currentTarget._node.value;
+        var c = Y.Escape.html(e.currentTarget._node.value);
         this.get("model").set('className', c);
       },
       unitClassNameChanged: function(e) {
-        var u = e.currentTarget._node.value;
+        var u = Y.Escape.html(e.currentTarget._node.value);
         this.get("model").set('unitClassName', u);
       },
 
@@ -129,7 +129,7 @@ YUI.add('controlView', function(Y, name) {
             id: undefined,
             name: undefined,
             max: undefined,
-            min: undefined  
+            min: undefined
           };
 
           if (addMediaQueryView === undefined) {
@@ -138,7 +138,7 @@ YUI.add('controlView', function(Y, name) {
           else {
             addMediaQueryView.set('model', new Y.Model(defaultMq));
           }
-          
+
           addMediaQueryView.render();
       },
       */
@@ -159,12 +159,12 @@ YUI.add('controlView', function(Y, name) {
       // },
 
       // mediaQueryClicked: function(e) {
-      //   var mq, 
-      //     defaultMq, 
+      //   var mq,
+      //     defaultMq,
       //     editMediaQueryView = this.get("editMediaQueryView");
       //   if (Y.one(e.target).hasClass("candy")) {
       //     mq = Y.one(e.target);
-          
+
       //     //Get the appropriate media query object.
       //     defaultMq = Y.Array.find(this.get("defaultMediaQueries"), function(item) {
       //       return (item.id === mq.getAttribute("data-mqId")) ? true : false;
@@ -220,9 +220,9 @@ YUI.add('controlView', function(Y, name) {
       }
   });
 
-  
+
 	Y.namespace("GB").ControlView = ControlView;
-	
+
 }, '0.0.1', {
 	requires: ['node', 'view', 'editMediaQueryView', 'addMediaQueryView', 'defaultMediaQueryView']
 });
