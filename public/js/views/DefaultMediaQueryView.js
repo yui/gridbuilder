@@ -22,7 +22,7 @@ YUI.add('defaultMediaQueryView', function(Y, name) {
       "#dmq-default": { click: 'defaultClicked' },
     },
 
-    //this object is updated when changes are being applied. If confirmed, the model is set to this model. 
+    //this object is updated when changes are being applied. If confirmed, the model is set to this model.
     //Otherwise, this object is reset.
     dmqModel: {},
 
@@ -131,7 +131,7 @@ YUI.add('defaultMediaQueryView', function(Y, name) {
         if (panel === undefined) {
           panel = new Y.Panel({
             srcNode: container,
-            bodyContent: Y.Lang.sub(template, this._determineValue(model.toJSON())), 
+            bodyContent: Y.Lang.sub(template, this._determineValue(model.toJSON())),
             centered: true,
             width: '80%',
             visible: true,
@@ -141,7 +141,7 @@ YUI.add('defaultMediaQueryView', function(Y, name) {
                   {
                       name  : 'Cancel',
                       label : 'Cancel',
-                      classNames: 'minibutton yui3-u',
+                      classNames: 'pure-button minibutton yui3-u',
                       action: function (e) {
                         //reset dmqModel
                         self.dmqModel = model;
@@ -152,7 +152,7 @@ YUI.add('defaultMediaQueryView', function(Y, name) {
                   {
                       name     : 'Confirm',
                       label    : 'Save Changes',
-                      classNames: 'minibutton notice yui3-u',
+                      classNames: 'pure-button minibutton notice yui3-u',
                       action: function (e) {
 
                         var dmq = self.dmqModel.get('useDefaultMediaQueries');
@@ -180,7 +180,7 @@ YUI.add('defaultMediaQueryView', function(Y, name) {
         else {
           panel.set('bodyContent', Y.Lang.sub(template, this._determineValue(model.toJSON())));
           panel.show();
-          
+
           //Populate the media query values from the input button
           Y.one(PHONE_INPUT_MAX).set('value', dmq.phone.max);
           Y.one(PHONE_TABLET_INPUT_MAX).set('value', dmq.phoneTablet.max);
@@ -209,7 +209,7 @@ YUI.add('defaultMediaQueryView', function(Y, name) {
       }
   });
 
-  
+
     Y.namespace("GB").DefaultMediaQueryView = DefaultMediaQueryView;
 }, '0.0.1', {
     requires: ['node', 'view', 'panel']

@@ -21,7 +21,7 @@ YUI.add('addMediaQueryView', function(Y, name) {
             console.log(model.toJSON());
             panel = new Y.Panel({
               srcNode: container,
-              bodyContent: Y.Lang.sub(template, model.toJSON()), 
+              bodyContent: Y.Lang.sub(template, model.toJSON()),
               centered: true,
               width: 500,
               modal:true,
@@ -30,7 +30,7 @@ YUI.add('addMediaQueryView', function(Y, name) {
                     {
                         name  : 'Cancel',
                         label : 'Cancel',
-                        classNames: 'minibutton',
+                        classNames: 'pure-button minibutton',
                         action: function (e) {
                           panel.hide();
                         }
@@ -39,7 +39,7 @@ YUI.add('addMediaQueryView', function(Y, name) {
                     {
                         name     : 'Add',
                         label    : 'Add',
-                        classNames: 'minibutton notice',
+                        classNames: 'pure-button minibutton notice',
                         action: function(e) {
                           panel.hide();
                         }
@@ -77,7 +77,7 @@ YUI.add('addMediaQueryView', function(Y, name) {
       }
   });
 
-  
+
     Y.namespace("GB").AddMediaQueryView = AddMediaQueryView;
 }, '0.0.1', {
     requires: ['node', 'view', 'panel']
