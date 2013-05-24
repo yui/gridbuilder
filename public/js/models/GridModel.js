@@ -32,7 +32,7 @@ YUI.add('gridModel', function(Y, name) {
             });
 
             Y.Handlebars.registerHelper('groupUnits', function (classPrefix, unitClassName, unitsArr) {
-                var i = 0, 
+                var i = 0,
                     //add the first unit
                     str = '.' + classPrefix + unitClassName + '-1';
 
@@ -105,7 +105,7 @@ YUI.add('gridModel', function(Y, name) {
         },
 
         classPrefix: {
-          value: 'yui3-'
+          value: 'pure-'
         },
 
         unitClassName: {
@@ -184,10 +184,10 @@ YUI.add('gridModel', function(Y, name) {
         }
 
       }
-    }); 
-    
+    });
+
     Y.namespace("GB").GridModel = GridModel;
-}, '0.2.0', {
+}, '1.0.0', {
     requires: ['model', 'handlebars', 'io-base']
 });
 
