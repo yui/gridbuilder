@@ -3,13 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YUI GridBuilder</title>
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.9.0/build/cssnormalize/cssnormalize-min.css">
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.9.0/build/cssgrids-responsive/cssgrids-responsive-min.css">
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.9.0/build/cssbutton/cssbutton-min.css">
-    <link rel="stylesheet" type="text/css" href="https://rawgithub.com/tilomitra/csslist/master/css/list-core.css">
-    <link rel="stylesheet" type="text/css" href="https://rawgithub.com/tilomitra/csslist/master/css/list.css">
-    <link rel="stylesheet" type="text/css" href="https://rawgithub.com/tilomitra/csslist/master/css/list-responsive.css">
+    <title>YUI Grid Builder</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.0.2/pure-min.css">
     <link rel="stylesheet" type="text/css" href="https://rawgithub.com/tilomitra/yuicss-common/master/ui.css">
     <link rel="stylesheet" type="text/css" href="public/css/user-interface.css">
     <link rel="stylesheet" type="text/css" href="https://rawgithub.com/ccampbell/rainbow/master/themes/github.css">
@@ -25,38 +20,38 @@
     </style>
 
 </head>
-<body class="yui3-g yui3-skin-sam">
-    <div id="wrapper" class="yui3-g">
-        <div id="headerMenu" class="yui3-menu yui3-menu-open yui3-menu-horizontal yui3-menu-fixed">
-            <a href="/gridbuilder/" class="yui3-u yui3-menu-heading">YUI GridBuilder</a>
+<body class="pure-g yui3-skin-sam">
+    <div id="wrapper" class="pure-g">
+        <div id="headerMenu" class="pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
+            <a href="/gridbuilder/" class="pure-u pure-menu-heading">YUI GridBuilder</a>
             <ul>
-                <li class='yui3-u'><a href="docs.html" alt="Documentation">Documentation</a></li>
-                <li class='yui3-u'><a href="examples/magazine/" alt="Example">Example</a></li>
-                <li class='yui3-u'><a href="https://github.com/yui/gridbuilder/issues" alt="File an issue">File an issue</a></li>
+                <li class='pure-u'><a href="docs.html" alt="Documentation">Documentation</a></li>
+                <li class='pure-u'><a href="examples/magazine/" alt="Example">Example</a></li>
+                <li class='pure-u'><a href="https://github.com/yui/gridbuilder/issues" alt="File an issue">File an issue</a></li>
             </ul>
         </div>
-        <div class="header yui3-u-1">
+        <div class="header pure-u-1">
 
-            <h1 class="yui3-u-1">YUI GridBuilder</h1>
-            <h2 class="yui3-u">Build a custom grid for your project</h2>
+            <h1 class="pure-u-1">YUI Grid Builder</h1>
+            <h2 class="pure-u">Build a custom grid for your project</h2>
 
         </div>
 
-        <div class="yui3-u-1">
-            <div class="yui3-g" id="controlPanel">
-                <div class="yui3-u-1-6">
+        <div class="pure-u-1">
+            <div class="pure-g" id="controlPanel">
+                <div class="pure-u-1-6">
                     <div class="cell" id="width">
                         <label for="grid-width">Width</label>
                         <input type="text" id="grid-width" value="960" disabled='true'/> <small>px</small>
                     </div>
                 </div>
-                <div class="yui3-u-1-6">
+                <div class="pure-u-1-6">
                     <div class="cell" id="columns">
                         <label for="grid-columns">Columns</label>
                         <input type="text" id="grid-columns"  value="12" />
                     </div>
                 </div>
-                <div class="yui3-u-1-6">
+                <div class="pure-u-1-6">
                     <div class="cell" id="layout">
                         <label for="grid-layout">Type of Layout</label><br/>
                         <input type="radio" name="grid-layout" id="grid-layout-fixed"  /> <small>Fixed</small>
@@ -64,72 +59,72 @@
                     </div>
                 </div>
                 <!--
-                <div class="yui3-u-1-5">
+                <div class="pure-u-1-5">
                     <div class="cell" id="responsive">
                         <label for="grid-gutter">Gutter</label>
                         <input type="text" id="grid-gutter"  value="6" /><small>px</small>
                     </div>
                 </div>
                 -->
-                <div class="yui3-u-1-6">
+                <div class="pure-u-1-6">
                     <div class="cell" id="responsive">
                         <label for="grid-responsive">Responsive</label><br/>
                         <input type="radio" name="grid-responsive" id="grid-responsive-yes" checked/> <small>Yes</small>
                         <input type="radio" name="grid-responsive" id="grid-responsive-no" /> <small>No</small>
                     </div>
                 </div>
-                <div class="yui3-u-1-6">
+                <div class="pure-u-1-6">
                     <div class="cell" id="prefix">
                         <label for="grid-prefix">Prefix</label>
                         <label for="grid-prefix">Row</label>
                         <label for="grid-prefix">Column</label>
                         <br/>
-                        <input type="text" id="grid-prefix" value="yui3-" placeholder='yui3-'/>
+                        <input type="text" id="grid-prefix" value="pure-" placeholder='pure-'/>
                         <input type="text" id="grid-classname" value="g" placeholder="row" />
                         <input type="text" id="grid-unitClassName" value="u" placeholder="col"/>
                     </div>
                 </div>
-                <div class="yui3-u-1-6">
+                <div class="pure-u-1-6">
                     <div class="cell" id="media-queries">
                         <label>Media Queries</label><br/>
                         <span id="current-media-queries"></span>
-                        <input type="button" class="yui3-button" id="default-media-queries" value="Edit Defaults"/>
-                        <!-- <input type="button" class="yui3-button notice" id="add-media-queries" value="Add"/> -->
+                        <input type="button" class="pure-button" id="default-media-queries" value="Edit Defaults"/>
+                        <!-- <input type="button" class="pure-button notice" id="add-media-queries" value="Add"/> -->
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="demo" class="yui3-u-1">
+        <div id="demo" class="pure-u-1">
             <h3>Demo</h3>
             <div id="d"></div>
 
-        
-            <div id="css-toggle" class="yui3-u-1">
+
+            <div id="css-toggle" class="pure-u-1">
                 <h3>Grid CSS</h3>
                 <p>
-                    Using <a href="http://yuilibrary.com/yui/docs/cssgrids/">YUI Grids</a> from <span>YUI 3.9.0</span><br/>
+                    Using <span>Pure Grids</span>  v0.0.2<br/>
                     <input id="css-toggle-chkbox" type="checkbox"> View Minified CSS
                 </p>
             </div>
 <!--             <div class="centered">
-                <input class='yui3-button notice' id="show-css-button" value="Show CSS"/>
+                <input class='pure-button notice' id="show-css-button" value="Show CSS"/>
             </div> -->
             <div id="demo-css"></div>
         </div>
 
-        <div class="footer" class="yui3-u-1">
-            <small class="yui3-u-1 centered">
-                Built with love by the YUI Team. File issues and send pull requests on <a href="http://github.com/yui/gridbuilder">Github</a>.
+        <div class="footer" class="pure-u-1">
+            <small class="pure-u-1 centered">
+                Built with <3 by the YUI Team. File issues and send pull requests on <a href="http://github.com/yui/gridbuilder">GitHub</a>.
             </small>
         </div>
     </div>
-    <!-- <div id="screen-width" class="yui3-u-1">This bar displays the screen width as you resize the window.</div> -->
+    <!-- <div id="screen-width" class="pure-u-1">This bar displays the screen width as you resize the window.</div> -->
 
     <div id="panel-content"></div>
 
     <script id="edit-media-query-view" type='text/x-template'>
-        <div class="yui3-widget-bd yui3-u-1">
+        <div class="yui3-widget-bd pure-u-1">
             <h3>{name} <span>{id}</span></h3>
             <p>This media query has the following rules attached to it:</p>
             <p class="desc">{description}</p>
@@ -137,7 +132,7 @@
     </script>
 
     <script id="add-media-query-view" type='text/x-template'>
-        <div class="yui3-widget-bd yui3-u-1">
+        <div class="pure-widget-bd pure-u-1">
             <h3>Add A New Media Query</h3>
             <p>This media query has the following rules attached to it:</p>
             <p class="desc">{description}</p>
@@ -145,47 +140,47 @@
     </script>
 
     <script id="default-media-query-view" type='text/x-template'>
-        <div class="yui3-widget-bd yui3-u-1">
+        <div class="yui3-widget-bd pure-u-1">
 
             <h2>Edit Media Queries</h2>
             <h3>Change the width values at which media queries are activated, or remove media queries that you do not need.</h3>
-            <div class="yui3-g">
-                <div class="yui3-u-1-2">
+            <div class="pure-g">
+                <div class="pure-u-1-2">
                     <div class="cell">
                         <h3>Smartphones <br/><span><input id="phone-query" class="media-query-input" value="480">px and below</span></h3>
                         <ul>
                             <li>Collapses responsive elements to 100% width </li>
                             <li>Includes helper classes to show/hide elements on smartphones</li>
                         </ul>
-                        <input type="button" class="yui3-button minibutton dmq-button" id="dmq-phone" value="{phoneValue}">
+                        <input type="button" class="pure-button minibutton dmq-button" id="dmq-phone" value="{phoneValue}">
                     </div>
                 </div>
-                <div class="yui3-u-1-2">
+                <div class="pure-u-1-2">
                     <div class="cell">
                         <h3>Smartphones to Tablets <br/><span><input id="phone-tablet-query" class="media-query-input" value="767">px and below</span></h3>
                         <ul>
                             <li>Collapses responsive elements to 100% width</li>
                             <li>Includes helper classes to show/hide elements on smaller tablets</li>
                         </ul>
-                        <input type="button" class="yui3-button minibutton dmq-button" id="dmq-phoneTablet" value="{phoneTabletValue}">
+                        <input type="button" class="pure-button minibutton dmq-button" id="dmq-phoneTablet" value="{phoneTabletValue}">
                     </div>
                 </div>
-                <div class="yui3-u-1-2">
+                <div class="pure-u-1-2">
                     <div class="cell">
                         <h3>Tablets <br/><span><input class="media-query-input" id="tablet-min-query" value="768">px to <input id="tablet-max-query" class="media-query-input" value="979">px</span></h3>
                         <ul>
                             <li>Includes helper classes to show/hide elements on regular tablets such as iPads</li>
                         </ul>
-                        <input type="button" class="yui3-button minibutton dmq-button" id="dmq-tablet" value="{tabletValue}">
+                        <input type="button" class="pure-button minibutton dmq-button" id="dmq-tablet" value="{tabletValue}">
                     </div>
                 </div>
-                <div class="yui3-u-1-2">
+                <div class="pure-u-1-2">
                     <div class="cell">
                         <h3>Default <br/><span><input class="media-query-input" id="default-query" value="980">px and above</span></h3>
                         <ul>
                             <li>Includes helper classes to show/hide elements on standard monitors/laptops screens</li>
                         </ul>
-                        <input type="button" class="yui3-button minibutton dmq-button" id="dmq-default" value="{defaultValue}">
+                        <input type="button" class="pure-button minibutton dmq-button" id="dmq-default" value="{defaultValue}">
                     </div>
                 </div>
             </div>
